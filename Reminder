@@ -1,0 +1,3 @@
+cannot submit with blank input: title,text, input login/signup
+password is hash before stored,
+token lasts for 6 hours
