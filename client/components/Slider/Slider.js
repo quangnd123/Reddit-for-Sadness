@@ -33,11 +33,13 @@ function Slider({ slides }) {
             key={index}
           >
             {index === current && (
-              <img
-                src={slide.image}
-                alt="mental"
-                className={styles.image}
-              ></img>
+              <a href={slide.url} target="_blank">
+                <img
+                  src={slide.image}
+                  alt="mental"
+                  className={styles.image}
+                ></img>
+              </a>
             )}
           </div>
         );
