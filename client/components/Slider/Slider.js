@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import dataSlider from "./dataSlider";
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 import styles from "./Slider.module.css";
+import { CSSTransition } from "react-transition-group";
+import { Button, Container, Image, Divider } from "semantic-ui-react";
+import SlideImage from "./SlideImage";
 
 function Slider({ slides }) {
   const [current, setCurrent] = useState(0);
@@ -20,31 +23,35 @@ function Slider({ slides }) {
   }
 
   return (
-    <section className={styles.slider}>
-      <FaArrowAltCircleLeft className={styles.leftArrow} onClick={prevSlide} />
-      <FaArrowAltCircleRight
-        className={styles.rightArrow}
-        onClick={nextSlide}
-      />
-      {dataSlider.map((slide, index) => {
-        return (
-          <div
-            className={index === current ? styles.slideactive : styles.slide}
-            key={index}
-          >
-            {index === current && (
-              <a href={slide.url} target="_blank">
-                <img
-                  src={slide.image}
-                  alt="mental"
-                  className={styles.image}
-                ></img>
-              </a>
-            )}
-          </div>
-        );
-      })}
-    </section>
+    <div className={styles.slideshow}>
+      <section className={styles.slider}>
+        <FaArrowAltCircleLeft
+          className={styles.leftArrow}
+          onClick={prevSlide}
+        />
+        <FaArrowAltCircleRight
+          className={styles.rightArrow}
+          onClick={nextSlide}
+        />
+        {dataSlider.map((slide, index) => {
+          return (
+            <div
+              className={index === current ? styles.slideactive : styles.slide}
+              key={index}
+            >
+              {/* <div className={styles.link}>{slide.content}</div> */}
+              {index === current && (
+                  <SlideImage
+                    image={slide.image}
+                    url={slide.url}
+                    content={slide.content}
+                  />
+              )}
+            </div>
+          );
+        })}
+      </section>
+    </div>
   );
 }
 
