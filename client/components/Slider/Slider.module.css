@@ -66,8 +66,8 @@
 .positioning {
   position: absolute;
   right: 15px;
-  bottom: 22px;
-  background-color: rgb(39, 168, 0);
+  top: 22px;
+  background-color: rgb(11, 2, 148);
   color: white;
   padding: 4px;
   font-size: 17px;
