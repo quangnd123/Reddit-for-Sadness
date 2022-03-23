@@ -14,7 +14,7 @@
 
 .rightArrow {
   position: absolute;
-  top: 40%;
+  top: 50%;
   right: 32px;
   font-size: 3rem;
   color: #000;
@@ -25,7 +25,7 @@
 
 .leftArrow {
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 32px;
   font-size: 3rem;
   color: #000;
