@@ -8,6 +8,7 @@ import {
   Form,
   Grid,
   GridColumn,
+  Message,
 } from "semantic-ui-react";
 import styles from "./InputLocation.module.css";
 import { validLocation } from "./validLocation";
@@ -21,8 +22,6 @@ function InputLocation() {
     if (validLocation.test(enteredValue)) {
       setErrorInput(false);
     }
-    console.log(enteredValue);
-    console.log(isErrorInput);
   };
 
   const locationInputChangeHandler = (event) => {
@@ -46,7 +45,11 @@ function InputLocation() {
             />
           </Grid.Column>
           <Grid.Column width={6}>
-            <Form onSubmit={formSubmitHandler}>
+            <Form
+              onSubmit={formSubmitHandler}
+              error={isErrorInput}
+              success={!isErrorInput}
+            >
               <Form.Field>
                 <Label pointing="below">Please enter a location</Label>
                 <Form.Input
@@ -62,6 +65,16 @@ function InputLocation() {
                   onChange={locationInputChangeHandler}
                   required
                 />
+                {isErrorInput === true && (
+                  <Message error content="Please enter a valid postal code" />
+                )}
+                {isErrorInput !== true && (
+                  <Message
+                    success
+                    header="Success"
+                    content="Finding nearby counsellors"
+                  />
+                )}
               </Form.Field>
             </Form>
           </Grid.Column>
