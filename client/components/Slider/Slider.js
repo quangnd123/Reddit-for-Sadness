@@ -36,16 +36,19 @@ function Slider({ slides }) {
         {dataSlider.map((slide, index) => {
           return (
             <div
-              className={index === current ? styles.slideactive : styles.slide}
+              //className={index === current ? styles.slideactive : styles.slide}
+              className={`${styles.slide} ${
+                index === current && styles.active
+              }`}
               key={index}
             >
               {/* <div className={styles.link}>{slide.content}</div> */}
               {index === current && (
-                  <SlideImage
-                    image={slide.image}
-                    url={slide.url}
-                    content={slide.content}
-                  />
+                <SlideImage
+                  image={slide.image}
+                  url={slide.url}
+                  content={slide.content}
+                />
               )}
             </div>
           );
