@@ -1,14 +1,14 @@
 .slider {
   position: relative;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
 }
 
 .image {
-  width: 1500px;
-  height: 600px;
+  width: 100%;
+  height: 100%;
   border-radius: 10px;
 }
 
@@ -47,9 +47,7 @@
 
 .slideshow {
   background-color: #eff7ff;
-  height: 650px;
-  padding-top: 25px;
-  border-radius: 1%;
+  height: 600px;
 }
 
 .helplink {
