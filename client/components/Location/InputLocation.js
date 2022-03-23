@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Header,
@@ -9,8 +9,26 @@ import {
   Grid,
   GridColumn,
 } from "semantic-ui-react";
+import styles from "./InputLocation.module.css";
+import { validLocation } from "./validLocation";
 
 function InputLocation() {
+  const [enteredValue, setEnteredValue] = useState("");
+  const [isErrorInput, setErrorInput] = useState(true);
+
+  const formSubmitHandler = (event) => {
+    event.preventDefault();
+    if (validLocation.test(enteredValue)) {
+      setErrorInput(false);
+    }
+    console.log(enteredValue);
+    console.log(isErrorInput);
+  };
+
+  const locationInputChangeHandler = (event) => {
+    setEnteredValue(event.target.value);
+  };
+
   return (
     <Container
       textAlign="center"
@@ -28,10 +46,11 @@ function InputLocation() {
             />
           </Grid.Column>
           <Grid.Column width={6}>
-            <Form>
+            <Form onSubmit={formSubmitHandler}>
               <Form.Field>
                 <Label pointing="below">Please enter a location</Label>
                 <Form.Input
+                  error={isErrorInput}
                   action={{
                     color: "blue",
                     content: "Find Nearest Counsellors",
@@ -40,6 +59,8 @@ function InputLocation() {
                   iconPosition="left"
                   placeholder="Input Location:"
                   centered
+                  onChange={locationInputChangeHandler}
+                  required
                 />
               </Form.Field>
             </Form>

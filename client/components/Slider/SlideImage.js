@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Slider.module.css";
 import {
   Button,
@@ -10,11 +10,23 @@ import {
 } from "semantic-ui-react";
 
 function SlideImage({ image, content, url, info }) {
+  function MouseOver(event) {
+    event.target.style.background = "grey";
+  }
+  function MouseOut(event) {
+    event.target.style.background = "";
+  }
   return (
     <div>
       <div className={styles.wordPositioning}>{info}</div>
       <a href={url} target="_blank">
-        <div className={styles.positioning}>{content}</div>
+        <button
+          className={styles.positioning}
+          onMouseEnter={MouseOver}
+          onMouseLeave={MouseOut}
+        >
+          {content}
+        </button>
       </a>
       <img src={image} className={styles.image} alt="mental health" />
     </div>

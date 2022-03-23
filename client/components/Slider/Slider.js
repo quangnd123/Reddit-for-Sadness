@@ -43,6 +43,7 @@ function Slider({ slides }) {
                 image={slide.image}
                 url={slide.url}
                 content={slide.content}
+                info={slide.info}
               />
             )}
           </div>
