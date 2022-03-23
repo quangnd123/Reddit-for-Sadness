@@ -66,7 +66,11 @@ function InputLocation() {
                   required
                 />
                 {isErrorInput === true && (
-                  <Message error content="Please enter a valid postal code" />
+                  <Message
+                    error
+                    header="Error"
+                    content="Please enter a valid postal code"
+                  />
                 )}
                 {isErrorInput !== true && (
                   <Message
