@@ -45,6 +45,15 @@ const register = () => {
 
   return (
     <div>
+      <img
+        src="https://i0.wp.com/media.wgrz.com/assets/WGRZ/images/c41fabb6-810f-4527-b945-ed6c193eb8b2/c41fabb6-810f-4527-b945-ed6c193eb8b2_1140x641.jpeg"
+        style={{
+          maxHeight: "654px",
+          height: "100%",
+          width: "100%",
+          objectFit: "cover",
+        }}
+      />
       <div
         style={{
           position: "absolute",

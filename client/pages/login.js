@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/react-hooks";
 import React, { useState, useContext } from "react";
-import { Button, Dropdown, Form, Grid } from "semantic-ui-react";
+import { Button, Dropdown, Form, Grid, Header } from "semantic-ui-react";
 import { loginUser } from "../graphql/mutation.js";
 import { useRouter } from "next/router";
 import { AuthContext } from "../context/auth.js";
@@ -48,7 +48,7 @@ const login = () => {
       <img
         src="https://www.cleantechloops.com/wp-content/uploads/2020/06/taboos-mental-health.jpg"
         style={{
-          maxHeight: "655px",
+          maxHeight: "654px",
           height: "100%",
           width: "100%",
           objectFit: "cover",
@@ -116,6 +116,9 @@ const login = () => {
           <Button type="submit" primary>
             Login
           </Button>
+          <Header as="h4">
+            New here? <a href="/register">Create an account here</a>
+          </Header>
         </Form>
         {Object.keys(serverErrors).length > 0 && (
           <div className="ui error message">

@@ -20,13 +20,13 @@ function SlideImage({ image, content, url, info }) {
     <div>
       <div className={styles.wordPositioning}>{info}</div>
       <a href={url} target="_blank">
-        <button
+        <Button
           className={styles.positioning}
           onMouseEnter={MouseOver}
           onMouseLeave={MouseOut}
         >
           {content}
-        </button>
+        </Button>
       </a>
       <img src={image} className={styles.image} alt="mental health" />
     </div>
