@@ -44,73 +44,89 @@ const login = () => {
   }
 
   return (
-    <div>
-      <Grid centered verticalAlign="middle" width={6}>
-        <Grid.Row centered columns={2}>
-          <Grid.Column width={6} centered>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <h1 style={{ color: "orange" }}>Welcome back!</h1>
-            <Form onSubmit={onSubmit} className={loading ? "loading" : ""}>
-              <h2>Login</h2>
-              <Form.Input
-                label="Email"
-                placeholder="Email"
-                name="email"
-                type="text"
-                value={values.email}
-                onChange={onChange}
-                width={10}
-              />
-              <Form.Input
-                label="Password"
-                placeholder="Password"
-                name="password"
-                type="password"
-                value={values.password}
-                onChange={onChange}
-                width={10}
-              />
-              <Form.Dropdown
-                placeholder="choose account type"
-                name="accountType"
-                onChange={onChange}
-                selection
-                options={accountTypeOptions}
-                value={values.accountType}
-                width={10}
-              />
-              <Button type="submit" primary>
-                Submit
-              </Button>
-            </Form>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-          </Grid.Column>
-          {Object.keys(serverErrors).length > 0 && (
-            <div className="ui error message">
-              <ul className="list">
-                {Object.values(serverErrors).map((value) => (
-                  <li key={value}>{value}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-          <Grid.Column width={8}>
-            <LoginImage />
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+    <div style={{ height: "100%" }}>
+      <img
+        src="https://www.cleantechloops.com/wp-content/uploads/2020/06/taboos-mental-health.jpg"
+        style={{
+          maxHeight: "655px",
+          height: "100%",
+          width: "100%",
+          objectFit: "cover",
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          margin: "auto",
+          width: "30%",
+          borderStyle: "solid",
+          padding: "20px 20px 20px 20px",
+          borderRadius: "20px",
+          top: "20%",
+          left: "35%",
+          backgroundColor: "white",
+        }}
+      >
+        <h1
+          style={{
+            color: "rgb(0,0,0)",
+            margin: "auto",
+            width: "100%",
+            textAlign: "center",
+          }}
+        >
+          Welcome back!
+        </h1>
+        <Form
+          onSubmit={onSubmit}
+          className={loading ? "loading" : ""}
+          style={{ margin: "auto", width: "100%", textAlign: "center" }}
+        >
+          <h2 style={{ textAlign: "center" }}>Login</h2>
+          <Form.Input
+            label="Email"
+            placeholder="Email"
+            name="email"
+            type="text"
+            value={values.email}
+            onChange={onChange}
+            style={{ textAlign: "center", margin: "auto" }}
+            fluid
+          />
+          <Form.Input
+            label="Password"
+            placeholder="Password"
+            name="password"
+            type="password"
+            value={values.password}
+            onChange={onChange}
+            fluid
+            style={{ textAlign: "center" }}
+          />
+          <Form.Dropdown
+            placeholder="choose account type"
+            name="accountType"
+            onChange={onChange}
+            selection
+            options={accountTypeOptions}
+            value={values.accountType}
+            fluid
+            style={{ textAlign: "center" }}
+          />
+          <Button type="submit" primary>
+            Submit
+          </Button>
+        </Form>
+        {Object.keys(serverErrors).length > 0 && (
+          <div className="ui error message">
+            <ul className="list">
+              {Object.values(serverErrors).map((value) => (
+                <li key={value}>{value}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
