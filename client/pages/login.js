@@ -44,7 +44,7 @@ const login = () => {
   }
 
   return (
-    <div style={{ height: "100%" }}>
+    <div>
       <img
         src="https://www.cleantechloops.com/wp-content/uploads/2020/06/taboos-mental-health.jpg"
         style={{
@@ -114,7 +114,7 @@ const login = () => {
             style={{ textAlign: "center" }}
           />
           <Button type="submit" primary>
-            Submit
+            Login
           </Button>
         </Form>
         {Object.keys(serverErrors).length > 0 && (

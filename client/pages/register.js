@@ -45,62 +45,89 @@ const register = () => {
 
   return (
     <div>
-      <Form onSubmit={onSubmit} className={loading ? "loading" : ""}>
-        <h1>Register</h1>
-        <Form.Input
-          label="Username"
-          placeholder="Username"
-          name="username"
-          type="text"
-          value={values.username}
-          onChange={onChange}
-        />
-        <Form.Input
-          label="Email"
-          placeholder="Email"
-          name="email"
-          type="text"
-          value={values.email}
-          onChange={onChange}
-        />
-        <Form.Input
-          label="Password"
-          placeholder="Password"
-          name="password"
-          type="password"
-          value={values.password}
-          onChange={onChange}
-        />
-        <Form.Input
-          label="ConfirmPassword"
-          placeholder="ConfirmPassword"
-          name="confirmPassword"
-          type="password"
-          value={values.confirmPassword}
-          onChange={onChange}
-        />
-        <Form.Dropdown
-          placeholder="choose account type"
-          name="accountType"
-          onChange={onChange}
-          selection
-          options={accountTypeOptions}
-          value={values.accountType}
-        />
-        <Button type="submit" primary>
-          Submit
-        </Button>
-      </Form>
-      {serverErrors !== null && Object.keys(serverErrors).length > 0 && (
-        <div className="ui error message">
-          <ul className="list">
-            {serverErrors !== null &&
-              Object.values(serverErrors).map((value) => (
-                <li key={value}>{value}</li>
-              ))}
-          </ul>
-        </div>
-      )}
+      <div
+        style={{
+          position: "absolute",
+          margin: "auto",
+          width: "30%",
+          borderStyle: "solid",
+          padding: "20px 20px 20px 20px",
+          borderRadius: "20px",
+          top: "15%",
+          left: "35%",
+          backgroundColor: "white",
+        }}
+      >
+        <Form
+          onSubmit={onSubmit}
+          className={loading ? "loading" : ""}
+          style={{ margin: "auto", width: "100%", textAlign: "center" }}
+        >
+          <h1
+            style={{
+              color: "rgb(0,0,0)",
+              margin: "auto",
+              width: "100%",
+              textAlign: "center",
+            }}
+          >
+            Register
+          </h1>
+          <Form.Input
+            label="Username"
+            placeholder="Username"
+            name="username"
+            type="text"
+            value={values.username}
+            onChange={onChange}
+          />
+          <Form.Input
+            label="Email"
+            placeholder="Email"
+            name="email"
+            type="text"
+            value={values.email}
+            onChange={onChange}
+          />
+          <Form.Input
+            label="Password"
+            placeholder="Password"
+            name="password"
+            type="password"
+            value={values.password}
+            onChange={onChange}
+          />
+          <Form.Input
+            label="ConfirmPassword"
+            placeholder="ConfirmPassword"
+            name="confirmPassword"
+            type="password"
+            value={values.confirmPassword}
+            onChange={onChange}
+          />
+          <Form.Dropdown
+            placeholder="choose account type"
+            name="accountType"
+            onChange={onChange}
+            selection
+            options={accountTypeOptions}
+            value={values.accountType}
+          />
+          <Button type="submit" primary>
+            Register Account
+          </Button>
+        </Form>
+        {serverErrors !== null && Object.keys(serverErrors).length > 0 && (
+          <div className="ui error message">
+            <ul className="list">
+              {serverErrors !== null &&
+                Object.values(serverErrors).map((value) => (
+                  <li key={value}>{value}</li>
+                ))}
+            </ul>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
