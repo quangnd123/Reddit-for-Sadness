@@ -1,6 +1,6 @@
 import { useMutation } from "@apollo/react-hooks";
 import React, { useState, useContext } from "react";
-import { Button, Dropdown, Form } from "semantic-ui-react";
+import { Button, Dropdown, Form, Header } from "semantic-ui-react";
 import { registerUser } from "../graphql/mutation.js";
 import { useRouter } from "next/router";
 import { AuthContext } from "../context/auth.js";
@@ -80,8 +80,11 @@ const register = () => {
               textAlign: "center",
             }}
           >
-            Register
+            Join Our Website!
           </h1>
+          <Header as="h3" style={{ color: "#0A2A5A" }}>
+            Join our community to connect with likeminded people!
+          </Header>
           <Form.Input
             label="Username"
             placeholder="Username"
