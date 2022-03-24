@@ -16,11 +16,15 @@ import { validLocation } from "./validLocation";
 function InputLocation() {
   const [enteredValue, setEnteredValue] = useState("");
   const [isErrorInput, setErrorInput] = useState(true);
+  const [errorCount, setErrorCount] = useState(false);
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
     if (validLocation.test(enteredValue)) {
       setErrorInput(false);
+    } else {
+      setErrorCount(true);
+      setErrorInput(true);
     }
   };
 
@@ -65,7 +69,7 @@ function InputLocation() {
                   onChange={locationInputChangeHandler}
                   required
                 />
-                {isErrorInput === true && (
+                {isErrorInput === true && errorCount && (
                   <Message
                     error
                     header="Error"

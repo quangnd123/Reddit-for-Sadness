@@ -48,7 +48,7 @@ const login = () => {
       <img
         src="https://www.cleantechloops.com/wp-content/uploads/2020/06/taboos-mental-health.jpg"
         style={{
-          maxHeight: "654px",
+          maxHeight: "900px",
           height: "100%",
           width: "100%",
           objectFit: "cover",
@@ -90,7 +90,6 @@ const login = () => {
             type="text"
             value={values.email}
             onChange={onChange}
-            style={{ textAlign: "center", margin: "auto" }}
             fluid
           />
           <Form.Input
@@ -101,7 +100,6 @@ const login = () => {
             value={values.password}
             onChange={onChange}
             fluid
-            style={{ textAlign: "center" }}
           />
           <Form.Dropdown
             placeholder="choose account type"

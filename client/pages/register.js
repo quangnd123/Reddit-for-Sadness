@@ -1,10 +1,11 @@
 import { useMutation } from "@apollo/react-hooks";
 import React, { useState, useContext } from "react";
-import { Button, Dropdown, Form, Header } from "semantic-ui-react";
+import { Button, Dropdown, Form, Header, Modal } from "semantic-ui-react";
 import { registerUser } from "../graphql/mutation.js";
 import { useRouter } from "next/router";
 import { AuthContext } from "../context/auth.js";
 import { useForm } from "../context/hook.js";
+import ModalSurvey from "../components/Survey/ModalSurvey.js";
 
 const register = () => {
   const router = useRouter();
@@ -42,6 +43,8 @@ const register = () => {
   function registerUserCallback() {
     addUser();
   }
+
+  
 
   return (
     <div>
@@ -82,7 +85,7 @@ const register = () => {
           >
             Join Our Website!
           </h1>
-          <Header as="h3" style={{ color: "#0A2A5A" }}>
+          <Header as="h3" style={{ color: "#0A2A5A", textAlign: "left" }}>
             Join our community to connect with likeminded people!
           </Header>
           <Form.Input
@@ -128,6 +131,7 @@ const register = () => {
           <Button type="submit" primary>
             Register Account
           </Button>
+          <ModalSurvey />
         </Form>
         {serverErrors !== null && Object.keys(serverErrors).length > 0 && (
           <div className="ui error message">
