@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { AuthContext } from "../context/auth.js";
 import { useForm } from "../context/hook.js";
 import ModalSurvey from "../components/Survey/ModalSurvey.js";
+import { urlObjectKeys } from "next/dist/shared/lib/utils";
 
 const register = () => {
   const router = useRouter();
@@ -44,30 +45,43 @@ const register = () => {
     addUser();
   }
 
-  
-
   return (
-    <div>
-      <img
+    <div
+      style={{
+        height: "1000px",
+        width: "100%",
+        backgroundImage:
+          "url(" +
+          "https://i0.wp.com/media.wgrz.com/assets/WGRZ/images/c41fabb6-810f-4527-b945-ed6c193eb8b2/c41fabb6-810f-4527-b945-ed6c193eb8b2_1140x641.jpeg" +
+          ")",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        minHeight: "100%",
+        minWidth: "500px",
+      }}
+    >
+      {/* <img
         src="https://i0.wp.com/media.wgrz.com/assets/WGRZ/images/c41fabb6-810f-4527-b945-ed6c193eb8b2/c41fabb6-810f-4527-b945-ed6c193eb8b2_1140x641.jpeg"
         style={{
-          maxHeight: "654px",
+          maxHeight: "1000px",
           height: "100%",
           width: "100%",
           objectFit: "cover",
         }}
-      />
+      /> */}
       <div
         style={{
-          position: "absolute",
+          position: "relative",
           margin: "auto",
           width: "30%",
           borderStyle: "solid",
           padding: "20px 20px 20px 20px",
           borderRadius: "20px",
           top: "15%",
-          left: "35%",
           backgroundColor: "white",
+          minHeight: "300px",
+          minWidth: "400px",
         }}
       >
         <Form
@@ -86,7 +100,7 @@ const register = () => {
             Join Our Website!
           </h1>
           <Header as="h3" style={{ color: "#0A2A5A", textAlign: "left" }}>
-            Join our community to connect with likeminded people!
+            Join our community to connect with like-minded people!
           </Header>
           <Form.Input
             label="Username"

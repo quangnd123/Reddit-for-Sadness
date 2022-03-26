@@ -44,8 +44,22 @@ const login = () => {
   }
 
   return (
-    <div>
-      <img
+    <div
+      style={{
+        height: "1000px",
+        width: "100%",
+        backgroundImage:
+          "url(" +
+          "https://www.cleantechloops.com/wp-content/uploads/2020/06/taboos-mental-health.jpg" +
+          ")",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        minHeight: "100%",
+        minWidth: "500px",
+      }}
+    >
+      {/* <img
         src="https://www.cleantechloops.com/wp-content/uploads/2020/06/taboos-mental-health.jpg"
         style={{
           maxHeight: "900px",
@@ -53,18 +67,19 @@ const login = () => {
           width: "100%",
           objectFit: "cover",
         }}
-      />
+      /> */}
       <div
         style={{
-          position: "absolute",
+          position: "relative",
           margin: "auto",
           width: "30%",
           borderStyle: "solid",
           padding: "20px 20px 20px 20px",
           borderRadius: "20px",
           top: "20%",
-          left: "35%",
           backgroundColor: "white",
+          minHeight: "300px",
+          minWidth: "400px",
         }}
       >
         <h1
