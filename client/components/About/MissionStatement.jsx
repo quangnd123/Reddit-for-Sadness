@@ -6,9 +6,8 @@ function MissionStatement() {
   return (
     <>
       <div className={styles.statement}>
-        <b>Mission Statement</b>
+        <b>Sometimes when I close my eyes, I can't see</b>
       </div>
-      <Divider />
     </>
   );
 }

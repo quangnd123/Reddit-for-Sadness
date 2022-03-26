@@ -6,6 +6,7 @@ function Stats() {
   return (
     <div>
       <h2 className={styles.stats}>Reddit for sadness by numbers</h2>
+      <Divider />
       <Grid columns={3} divided>
         <Grid.Row className={styles.rowStats}>
           <Grid.Column className={styles.gridStats}>
@@ -34,7 +35,6 @@ function Stats() {
           </Grid.Column>
         </Grid.Row>
       </Grid>
-      <Divider />
     </div>
   );
 }
