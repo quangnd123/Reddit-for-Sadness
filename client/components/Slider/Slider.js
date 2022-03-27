@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import dataSlider from "./dataSlider";
 import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 import styles from "./Slider.module.css";
-import { CSSTransition } from "react-transition-group";
+// import { CSSTransition } from "react-transition-group";
 import { Button, Container, Image, Divider } from "semantic-ui-react";
 import SlideImage from "./SlideImage";
 
