@@ -1,0 +1,30 @@
+import React from "react";
+import { Form } from "semantic-ui-react";
+import styles from "./ModalSurvey.module.css";
+
+function Survey({ question, label }) {
+  return (
+    <Form.Field>
+      <label className={styles.label}>{question}</label>
+      <input type="radio" value="1" name={label} className={styles.radio} />
+      1
+      <input type="radio" value="2" name={label} className={styles.radio} />
+      2
+      <input type="radio" value="3" name={label} className={styles.radio} />
+      3
+      <input type="radio" value="4" name={label} className={styles.radio} />
+      4
+      <input type="radio" value="5" name={label} className={styles.radio} />
+      5
+      <input type="radio" value="6" name={label} className={styles.radio} />
+      6
+      <input type="radio" value="7" name={label} className={styles.radio} />
+      7
+      <input type="radio" value="8" name={label} className={styles.radio} />
+      8
+      <input type="radio" value="9" name={label} className={styles.radio} />9
+    </Form.Field>
+  );
+}
+
+export default Survey;
