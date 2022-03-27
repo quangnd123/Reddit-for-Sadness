@@ -13,7 +13,7 @@ export default function Home() {
     return <h1>loading posts ...</h1>;
   }
   const { user } = useContext(AuthContext);
-  const { getPosts: posts } = data;
+  const posts = data?.getPosts;
 
   return (
     <Grid columns={1}>

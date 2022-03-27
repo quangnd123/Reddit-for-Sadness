@@ -30,7 +30,8 @@ const register = () => {
 
   const [addUser, { loading }] = useMutation(registerUser, {
     update(proxy, result) {
-      context.login(result.data.loginUser);
+      context.login(result.data.registerUser);
+      console.log(result);
       router.push("/");
     },
     onError(err) {
