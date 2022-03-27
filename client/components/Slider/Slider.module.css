@@ -1,0 +1,94 @@
+.slider {
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.image {
+  width: 100%;
+  max-height: 100%;
+  min-height: 500px;
+  min-width: 500px;
+  height: auto;
+  display: block;
+}
+
+.rightArrow {
+  position: absolute;
+  top: 45%;
+  right: 0.5%;
+  font-size: 3rem;
+  color: #000;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+}
+
+.leftArrow {
+  position: absolute;
+  top: 45%;
+  left: 0.5%;
+  font-size: 3rem;
+  color: #000;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+}
+
+.slide {
+  opacity: 0;
+  transition-duration: 2s ease;
+}
+
+.slide.active {
+  opacity: 1;
+  transition-duration: 2s;
+  transform: scale(1);
+}
+
+.slideshow {
+  background-color: #eff7ff;
+  height: 100%;
+}
+
+.helplink {
+  display: inline;
+  border-style: solid;
+  border-radius: 5%;
+}
+
+.imgcontainer {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  max-height: 100%;
+}
+
+.positioning {
+  position: absolute;
+  right: 15px;
+  bottom: 22px;
+  background-color: rgb(197, 197, 197);
+  color: black;
+  padding: 4px;
+  font-size: 20px;
+  line-height: 18px;
+  border-style: solid;
+  border-color: #000;
+}
+
+.wordPositioning {
+  position: absolute;
+  left: 100px;
+  top: 80px;
+  color: #000;
+  font-size: 40px;
+  font-weight: bolder;
+  width: 500px;
+}
+
+.buttonHover {
+  color: red;
+}

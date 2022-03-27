@@ -1,0 +1,49 @@
+.statement {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+  height: 300px;
+  padding-top: 7%;
+  font-size: xx-large;
+}
+
+.stats {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.gridStats {
+  text-align: center;
+  font-size: medium;
+}
+
+.rowStats {
+  height: 350px;
+}
+
+.totalStats {
+  padding-top: 20%;
+}
+
+.whoStatement {
+  margin: auto;
+  width: 50%;
+  text-align: center;
+  padding-top: 4%;
+  padding-bottom: 50px;
+  font-size: xx-large;
+  color: white;
+}
+
+.aboutStatement {
+  margin: auto;
+  width: 50%;
+  text-align: center;
+  font-size: x-large;
+  line-height: 1;
+  margin-bottom: 200px;
+}
