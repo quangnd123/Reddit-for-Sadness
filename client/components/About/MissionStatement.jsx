@@ -6,7 +6,7 @@ function MissionStatement() {
   return (
     <>
       <div className={styles.statement}>
-        <b>Sometimes when I close my eyes, I can't see</b>
+        <b>Mission Statement</b>
       </div>
     </>
   );
