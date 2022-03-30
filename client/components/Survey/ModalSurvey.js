@@ -25,11 +25,7 @@ function ModalSurvey() {
       <Modal.Content>
         <Header as="h2">We would like to get to know you!</Header>
         <Form>
-          <Survey question={"Are you gay?"} label={"Q1"} />
-          <Survey question={"Are you gay?"} label={"Q2"} />
-          <Survey question={"Are you gay?"} label={"Q3"} />
-          <Survey question={"Are you gay?"} label={"Q4"} />
-          <Survey question={"Are you gay?"} label={"Q5"} />
+          <Survey />
           <div className={styles.submit}>
             <Modal.Actions>
               <Button
