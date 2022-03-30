@@ -31,7 +31,7 @@ export function MenuBar() {
       </Link>
 
       <Menu.Menu position="right">
-        <Link href="/" passHref>
+        <Link href={`/user/${user._id}`} passHref>
           <Menu.Item name={user.username} />
         </Link>
 
