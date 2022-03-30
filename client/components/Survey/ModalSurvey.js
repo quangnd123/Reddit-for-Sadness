@@ -10,7 +10,7 @@ import styles from "./ModalSurvey.module.css";
 import React, { useState, useContext } from "react";
 import Survey from "./Survey";
 
-function ModalSurvey() {
+function ModalSurvey({ values, setValues, onSubmit }) {
   const [open, setOpen] = useState(false);
   return (
     <Modal
@@ -25,16 +25,11 @@ function ModalSurvey() {
       <Modal.Content>
         <Header as="h2">We would like to get to know you!</Header>
         <Form>
-          <Survey />
+          <Survey setValues={setValues} values={values} />
           <div className={styles.submit}>
             <Modal.Actions>
-              <Button
-                color="black"
-                onClick={() => setOpen(false)}
-                type="submit"
-                primary
-              >
-                Submit
+              <Button color="black" onClick={onSubmit} type="submit" primary>
+                Register Account
               </Button>
             </Modal.Actions>
           </div>
