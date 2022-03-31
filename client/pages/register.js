@@ -10,6 +10,8 @@ import { urlObjectKeys } from "next/dist/shared/lib/utils";
 import Geocode from "react-geocode";
 
 const register = () => {
+  Geocode.setApiKey("AIzaSyDqMrNKSBFKlhgI3m8zzv7Bu627qLimNZ0");
+  Geocode.setRegion("sg");
   const router = useRouter();
   const context = useContext(AuthContext);
   if (context.user) {
@@ -22,27 +24,39 @@ const register = () => {
     { text: "User", value: "User" },
     { text: "Counsellor", value: "Counsellor" },
   ];
-  const [inputAddress, setInputAddress] = useState("");
   const [values, setValues] = useState({
     username: "",
     email: "",
     password: "",
     confirmPassword: "",
     accountType: "User",
-    socialIntelligence: 0,
-    cognitiveEfficacy: 0,
-    selfEsteem: 0,
-    emotionalIntelligence: 0,
-    happyScale: 0,
-    surveyDate: null,
+    socialIntelligence: "",
+    cognitiveEfficacy: "",
+    selfEsteem: "",
+    emotionalIntelligence: "",
+    happyScale: "",
     address: {
-      lat: null,
-      lng: null,
+      lat: "",
+      lng: "",
     },
   });
   const onChange = (e, data) => {
     //console.log(data);
     setValues({ ...values, [data.name]: data.value });
+  };
+  const onChangeAddress = (e, data) => {
+    Geocode.fromAddress(data.value).then(
+      (response) => {
+        const { lat, lng } = response.results[0].geometry.location;
+        setValues({
+          ...values,
+          address: { lat: lat.toString(), lng: lng.toString() },
+        });
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   };
   const onSubmit = (event) => {
     event.preventDefault();
@@ -54,34 +68,22 @@ const register = () => {
       !values["happyScale"]
     ) {
       setServerErrors({ survey: "Please fill in the survey" });
-    } else if (!inputAddress) {
+    } else if (!values["address"].lat || !values["address"].lng) {
       setServerErrors({ address: "Please fill in the address" });
     } else {
-      Geocode.setApiKey("AIzaSyDqMrNKSBFKlhgI3m8zzv7Bu627qLimNZ0");
-      Geocode.setRegion("sg");
-      Geocode.fromAddress(inputAddress).then(
-        (response) => {
-          const { lat, lng } = response.results[0].geometry.location;
-          console.log(lat, lng);
-          setValues({ ...values, surveyDate: Date.now() });
-          setValues({ ...values, address: { lat: lat, lng: lng } });
-          addUser();
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
+      //console.log(values);
+      addUser();
     }
   };
-
   const [addUser, { loading }] = useMutation(registerUser, {
     update(proxy, result) {
       context.login(result.data.registerUser);
       console.log(result);
-      router.push("/");
+      //router.push("/");
     },
     onError(err) {
-      setServerErrors(err.graphQLErrors[0].extensions.errors);
+      console.log(err.networkError?.result.errors);
+      setServerErrors(err.graphQLErrors[0]?.extensions.errors);
     },
     variables: values,
   });
@@ -180,8 +182,8 @@ const register = () => {
             placeholder="Address"
             name="address"
             type="text"
-            value={inputAddress}
-            onChange={(e, data) => setInputAddress(data.value)}
+            //value={inputAddress}
+            onChange={onChangeAddress}
           />
           <Form.Dropdown
             placeholder="choose account type"

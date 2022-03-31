@@ -27,6 +27,7 @@ type Mutation{
     deleteComment(postID: ID!, commentID:ID!): Post!
     likePost(postID:ID!): Post!
     makeAppointment(appointmentInput: AppointmentInput!): Appointment!
+    deleteAppointment(appointmentID: ID!): String!
 }`;
 
 export default makeExecutableSchema({

@@ -20,7 +20,7 @@ function Survey({ setValues, values }) {
                   checked={radio === i + 1 || values[question.id] === i + 1}
                   onChange={(e, data) => {
                     setRadio(data.value);
-                    setValues({ ...values, [data.name]: data.value });
+                    setValues({ ...values, [data.name]: String(data.value) });
                   }}
                 />
               ))}

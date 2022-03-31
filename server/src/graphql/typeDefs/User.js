@@ -6,11 +6,11 @@ export const User = `
     email: String!
     password: String!
     token: String
-    socialIntelligence:Int
-    cognitiveEfficacy: Int
-    selfEsteem: Int
-    emotionalIntelligence: Int 
-    happyScale: Int
+    socialIntelligence:String
+    cognitiveEfficacy: String
+    selfEsteem: String
+    emotionalIntelligence: String 
+    happyScale: String
     address: Address
     createdAt: Date!
     updatedAt: Date!
@@ -31,16 +31,16 @@ export const User = `
   }
 
   input RegisterInput {
-    username: String!
-    email: String!
-    password: String!
-    accountType: String!
-    confirmPassword:String!
-    socialIntelligence:Int
-    cognitiveEfficacy: Int
-    selfEsteem: Int
-    emotionalIntelligence: Int 
-    happyScale: Int
+    username: String
+    email: String
+    password: String
+    accountType: String
+    confirmPassword:String
+    socialIntelligence:String
+    cognitiveEfficacy: String
+    selfEsteem: String
+    emotionalIntelligence: String 
+    happyScale: String
     address: InputAddress
   }
 

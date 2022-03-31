@@ -88,6 +88,8 @@ export const UserResolver = {
         createdAt: Date.now(),
         updatedAt: Date.now(),
       });
+
+      console.log(newUser);
       const { insertedId } = await userDB.insertOne(newUser);
       const user = await userDB.findOne({ _id: ObjectId(insertedId) });
       const token = generateToken(user);

@@ -13,6 +13,11 @@ export const AppointmentResolver = {
     },
   },
   Mutation: {
+    async deleteAppointment(parent, { appointmentID }, context) {
+      const appointmentDB = context.db.collection("Appointment");
+      await appointmentDB.deleteOne({ _id: ObjectId(appointmentID) });
+      return "Appointment deleted successfully";
+    },
     async makeAppointment(
       parent,
       { appointmentInput: { userID, counsellorID, address, date } },
@@ -27,7 +32,7 @@ export const AppointmentResolver = {
         userID: ObjectId(userID),
         date: {
           $gte: startDate,
-          $lt: end,
+          $lt: endDate,
         },
       });
 
@@ -46,7 +51,7 @@ export const AppointmentResolver = {
         counsellorID: ObjectId(counsellorID),
         date: {
           $gte: startDate,
-          $lt: end,
+          $lt: endDate,
         },
       });
 
@@ -65,7 +70,7 @@ export const AppointmentResolver = {
         userID: userID,
         counsellorID: counsellorID,
         address: address,
-        date: date,
+        date: Date.now(),
       });
       const { insertedId } = await appointmentDB.insertOne(newAppointment);
       const appointment = await appointmentDB.findOne({

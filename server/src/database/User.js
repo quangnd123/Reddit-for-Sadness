@@ -12,11 +12,11 @@ const userSchema = new Schema({
     lat: { type: String },
     lng: { type: String },
   },
-  socialIntelligence: { type: Number },
-  cognitiveEfficacy: { type: Number },
-  selfEsteem: { type: Number },
-  emotionalIntelligence: { type: Number },
-  happyScale: { type: Number },
+  socialIntelligence: { type: String },
+  cognitiveEfficacy: { type: String },
+  selfEsteem: { type: String },
+  emotionalIntelligence: { type: String },
+  happyScale: { type: String },
   surveyDate: { type: Date },
 });
 
