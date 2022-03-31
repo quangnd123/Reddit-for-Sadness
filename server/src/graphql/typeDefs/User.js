@@ -5,9 +5,24 @@ export const User = `
     username: String!
     email: String!
     password: String!
-    token: String!
+    token: String
+    socialIntelligence:String
+    cognitiveEfficacy: String
+    selfEsteem: String
+    emotionalIntelligence: String 
+    happyScale: String
+    address: Address
     createdAt: Date!
     updatedAt: Date!
+    surveyDate:Date
+  }
+  input InputAddress{
+    lat: String
+    lng: String
+  }
+  type Address{
+    lat: String
+    lng: String
   }
 
   enum AccountType{
@@ -16,11 +31,17 @@ export const User = `
   }
 
   input RegisterInput {
-    username: String!
-    email: String!
-    password: String!
-    accountType: String!
-    confirmPassword:String!
+    username: String
+    email: String
+    password: String
+    accountType: String
+    confirmPassword:String
+    socialIntelligence:String
+    cognitiveEfficacy: String
+    selfEsteem: String
+    emotionalIntelligence: String 
+    happyScale: String
+    address: InputAddress
   }
 
   input LoginInput {

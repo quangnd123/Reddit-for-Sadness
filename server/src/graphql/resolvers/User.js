@@ -22,6 +22,18 @@ function generateToken(user) {
 }
 
 export const UserResolver = {
+  Query: {
+    async getUser(parent, { userID }, context) {
+      const userDB = context.db.collection("User");
+      const user = await userDB.findOne({ _id: ObjectId(userID) });
+      return user;
+    },
+    async getCounsellors(parent, args, context) {
+      const userDB = context.db.collection("User");
+      const counsellors = await userDB.find({ accountType: "COUNSELLOR" });
+      return counsellors.toArray();
+    },
+  },
   Mutation: {
     async registerUser(
       _,
@@ -32,6 +44,12 @@ export const UserResolver = {
           password,
           accountType,
           confirmPassword,
+          socialIntelligence,
+          cognitiveEfficacy,
+          selfEsteem,
+          emotionalIntelligence,
+          happyScale,
+          address,
         },
       },
       context
@@ -60,9 +78,18 @@ export const UserResolver = {
         email: email,
         password: encryptedPassword,
         accountType: accountType,
+        socialIntelligence: socialIntelligence,
+        cognitiveEfficacy: cognitiveEfficacy,
+        selfEsteem: selfEsteem,
+        emotionalIntelligence: emotionalIntelligence,
+        happyScale: happyScale,
+        address: address,
+        surveyDate: Date.now(),
         createdAt: Date.now(),
         updatedAt: Date.now(),
       });
+
+      console.log(newUser);
       const { insertedId } = await userDB.insertOne(newUser);
       const user = await userDB.findOne({ _id: ObjectId(insertedId) });
       const token = generateToken(user);

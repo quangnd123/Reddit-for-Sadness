@@ -7,8 +7,11 @@ import { AuthContext } from "../context/auth.js";
 import { useForm } from "../context/hook.js";
 import ModalSurvey from "../components/Survey/ModalSurvey.js";
 import { urlObjectKeys } from "next/dist/shared/lib/utils";
+import Geocode from "react-geocode";
 
 const register = () => {
+  Geocode.setApiKey("AIzaSyDqMrNKSBFKlhgI3m8zzv7Bu627qLimNZ0");
+  Geocode.setRegion("sg");
   const router = useRouter();
   const context = useContext(AuthContext);
   if (context.user) {
@@ -21,30 +24,69 @@ const register = () => {
     { text: "User", value: "User" },
     { text: "Counsellor", value: "Counsellor" },
   ];
-
-  const { onChange, onSubmit, values } = useForm(registerUserCallback, {
+  const [values, setValues] = useState({
     username: "",
     email: "",
     password: "",
     confirmPassword: "",
     accountType: "User",
+    socialIntelligence: "",
+    cognitiveEfficacy: "",
+    selfEsteem: "",
+    emotionalIntelligence: "",
+    happyScale: "",
+    address: {
+      lat: "",
+      lng: "",
+    },
   });
-
+  const onChange = (e, data) => {
+    //console.log(data);
+    setValues({ ...values, [data.name]: data.value });
+  };
+  const onChangeAddress = (e, data) => {
+    Geocode.fromAddress(data.value).then(
+      (response) => {
+        const { lat, lng } = response.results[0].geometry.location;
+        setValues({
+          ...values,
+          address: { lat: lat.toString(), lng: lng.toString() },
+        });
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  };
+  const onSubmit = (event) => {
+    event.preventDefault();
+    if (
+      !values["socialIntelligence"] ||
+      !values["cognitiveEfficacy"] ||
+      !values["selfEsteem"] ||
+      !values["emotionalIntelligence"] ||
+      !values["happyScale"]
+    ) {
+      setServerErrors({ survey: "Please fill in the survey" });
+    } else if (!values["address"].lat || !values["address"].lng) {
+      setServerErrors({ address: "Please fill in the address" });
+    } else {
+      //console.log(values);
+      addUser();
+    }
+  };
   const [addUser, { loading }] = useMutation(registerUser, {
     update(proxy, result) {
       context.login(result.data.registerUser);
       console.log(result);
-      router.push("/");
+      //router.push("/");
     },
     onError(err) {
-      setServerErrors(err.graphQLErrors[0].extensions.errors);
+      console.log(err.networkError?.result.errors);
+      setServerErrors(err.graphQLErrors[0]?.extensions.errors);
     },
     variables: values,
   });
-
-  function registerUserCallback() {
-    addUser();
-  }
 
   return (
     <div
@@ -86,7 +128,7 @@ const register = () => {
         }}
       >
         <Form
-          onSubmit={onSubmit}
+          //onSubmit={onSubmit}
           className={loading ? "loading" : ""}
           style={{ margin: "auto", width: "100%", textAlign: "center" }}
         >
@@ -135,6 +177,14 @@ const register = () => {
             value={values.confirmPassword}
             onChange={onChange}
           />
+          <Form.Input
+            label="Address"
+            placeholder="Address"
+            name="address"
+            type="text"
+            //value={inputAddress}
+            onChange={onChangeAddress}
+          />
           <Form.Dropdown
             placeholder="choose account type"
             name="accountType"
@@ -143,10 +193,11 @@ const register = () => {
             options={accountTypeOptions}
             value={values.accountType}
           />
-          <Button type="submit" primary>
-            Register Account
-          </Button>
-          <ModalSurvey />
+          <ModalSurvey
+            values={values}
+            setValues={setValues}
+            onSubmit={onSubmit}
+          />
         </Form>
         {serverErrors !== null && Object.keys(serverErrors).length > 0 && (
           <div className="ui error message">
