@@ -9,7 +9,9 @@ const User = () => {
   const { user } = useContext(AuthContext);
   const router = useRouter();
   const { id } = router.query;
-
+  if (!user) {
+    router.push("/");
+  }
   return (
     <h3>
       <ViewProfile id={user._id} username={user.username} email={user.email} />

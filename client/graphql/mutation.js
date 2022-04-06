@@ -1,5 +1,34 @@
 import { gql } from "@apollo/react-hooks";
 
+export const deleteAppointment = gql`
+  mutation deleteAppointment($appointmentID: ID!) {
+    deleteAppointment(appointmentID: $appointmentID)
+  }
+`;
+export const makeAppointment = gql`
+  mutation makeAppointment(
+    $userID: ID!
+    $counsellorID: ID!
+    $address: InputAddress!
+    $date: Date!
+  ) {
+    makeAppointment(
+      appointmentInput: {
+        userID: $userID
+        counsellorID: $counsellorID
+        address: $address
+        date: $date
+      }
+    ) {
+      _id
+      userID
+      counsellorID
+      address
+      date
+    }
+  }
+`;
+
 export const registerUser = gql`
   mutation registerUser(
     $username: String!
@@ -7,6 +36,12 @@ export const registerUser = gql`
     $password: String!
     $accountType: String!
     $confirmPassword: String!
+    $socialIntelligence: String!
+    $cognitiveEfficacy: String!
+    $selfEsteem: String!
+    $emotionalIntelligence: String!
+    $happyScale: String!
+    $address: InputAddress!
   ) {
     registerUser(
       registerInput: {
@@ -15,6 +50,12 @@ export const registerUser = gql`
         password: $password
         accountType: $accountType
         confirmPassword: $confirmPassword
+        socialIntelligence: $socialIntelligence
+        cognitiveEfficacy: $cognitiveEfficacy
+        selfEsteem: $selfEsteem
+        emotionalIntelligence: $emotionalIntelligence
+        happyScale: $happyScale
+        address: $address
       }
     ) {
       _id
@@ -24,6 +65,16 @@ export const registerUser = gql`
       token
       createdAt
       updatedAt
+      socialIntelligence
+      cognitiveEfficacy
+      selfEsteem
+      emotionalIntelligence
+      happyScale
+      address {
+        lat
+        lng
+      }
+      surveyDate
     }
   }
 `;
@@ -48,6 +99,16 @@ export const loginUser = gql`
       token
       createdAt
       updatedAt
+      socialIntelligence
+      cognitiveEfficacy
+      selfEsteem
+      emotionalIntelligence
+      happyScale
+      address {
+        lat
+        lng
+      }
+      surveyDate
     }
   }
 `;
