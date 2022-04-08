@@ -1,34 +1,46 @@
 .change {
   padding-top: 18rem;
   line-height: 2rem;
-  border: solid 1px red;
 }
 
 .profile {
   padding-top: 2rem;
   padding-left: 10rem;
-  margin-left: 15rem;
-  border: solid 1px red;
-}
-
-.profileImage {
-  max-width: 10%;
-  border: solid 1px red;
-}
-
-.profileEdit {
-  text-align: center;
-  padding-top: 50rem;
-  border: solid 1px red;  
-}
-
-.editButtons {
-  background-color: white;
-  border: solid 1px red;
+  margin-left: 8rem;
 }
 
 .links {
+  margin-left: 0.25rem;
   display: block;
   color: black;
-  border: solid 1px red;
+}
+
+.data {
+  /*border: solid 1px red;*/
+  padding-top: 15px;
+  padding-left: 18%;
+}
+
+.info {
+  font-weight: 100;
+  font-size: large;
+}
+
+.image {
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+.editProfileModal {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 1%;
+}
+.editProfileModalInput {
+  text-align: center;
+  padding-bottom: 1%;
+}
+
+.editProfileModalInputField {
+  margin-left: 231px;
 }
