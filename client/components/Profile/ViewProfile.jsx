@@ -28,20 +28,20 @@ function ViewProfile({ id, email, username }) {
               src="https://images.nightcafe.studio//assets/profile.png?tr=w-1600,c-at_max"
             />
             <br />
-            <Button color="orange" fluid>
+            <Button color="orange" fluid disabled>
               Edit Profile Picture
             </Button>
             <br />
             <div>
               Username: {username}
-              <Button floated="right" size="mini">
+              <Button floated="right" size="mini" disabled>
                 EDIT USERNAME
               </Button>
             </div>
             <br />
             <div>
               Email: {email}
-              <Button floated="right" size="mini">
+              <Button floated="right" size="mini" disabled>
                 EDIT EMAIL
               </Button>
             </div>
