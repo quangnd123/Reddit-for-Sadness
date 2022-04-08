@@ -48,10 +48,11 @@ function ViewProfile({
             </div>
             <div className={styles.data}>
               Account Created At:
-              <span className={styles.info}> {createdAt}</span>
+              <span className={styles.info}> {createdAt.slice(0, 10)}</span>
             </div>
             <div className={styles.data}>
-              Survey Date: <span className={styles.info}>{surveyDate}</span>
+              Survey Date:{" "}
+              <span className={styles.info}>{surveyDate.slice(0, 10)}</span>
             </div>
             <div className={styles.data}>
               Overall Emotional Health:

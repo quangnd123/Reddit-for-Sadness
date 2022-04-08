@@ -24,6 +24,8 @@
 .info {
   font-weight: 100;
   font-size: large;
+  float: right;
+  margin-right: 120px;
 }
 
 .image {
