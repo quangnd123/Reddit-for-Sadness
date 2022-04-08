@@ -1,28 +1,34 @@
 .change {
   padding-top: 18rem;
   line-height: 2rem;
+  border: solid 1px red;
 }
 
 .profile {
   padding-top: 2rem;
   padding-left: 10rem;
   margin-left: 15rem;
+  border: solid 1px red;
 }
 
 .profileImage {
   max-width: 10%;
+  border: solid 1px red;
 }
 
 .profileEdit {
   text-align: center;
   padding-top: 50rem;
+  border: solid 1px red;  
 }
 
 .editButtons {
   background-color: white;
+  border: solid 1px red;
 }
 
 .links {
   display: block;
   color: black;
+  border: solid 1px red;
 }
