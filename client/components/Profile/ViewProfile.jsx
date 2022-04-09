@@ -5,6 +5,8 @@ import { MdModeEditOutline } from "react-icons/fa";
 import EditProfileButton from "./EditProfileButton";
 import ChangePassword from "./ChangePassword";
 import Appointment from "./Appointment";
+import { getUserAppointments } from "../../graphql/query.js";
+import { useQuery } from "@apollo/react-hooks";
 
 function ViewProfile({
   id,
@@ -16,6 +18,19 @@ function ViewProfile({
   happyscale,
 }) {
   const [open, setOpen] = React.useState(false);
+  // //query all appointments of user with userID "id", uncomment to use
+  // const { loading, data, error } = useQuery(getUserAppointments, {
+  //   variables: { userID: id },
+  // });
+  // if (loading) {
+  //   return <h1>Loading...</h1>;
+  // }
+  // if (error) {
+  //   return <h1>Error...</h1>;
+  // }
+  // // data.getUserAppointments is an array of appointments, open website and  F12 to see the console.log
+  // console.log(data.getUserAppointments);
+
   return (
     <div>
       <Grid>

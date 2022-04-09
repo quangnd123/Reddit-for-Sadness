@@ -7,23 +7,9 @@ import {
 } from "@react-google-maps/api";
 import { Input } from "semantic-ui-react";
 
-const users = [
-  {
-    username: "quang1",
-    address: { place: "NTU", lat: 1.3483, lng: 103.6831 },
-  },
-  {
-    username: "quang2",
-    address: { place: "NTU", lat: 1.2966, lng: 103.7764 },
-  },
-  {
-    username: "quang3",
-    address: { place: "NTU", lat: 1.3294, lng: 103.7762 },
-  },
-];
-const GoogleMapAPI = () => {
-  const [placeInput, setPlaceInput] = useState({});
+const GoogleMapAPI = ({ setPlaceInput, placeInput, counsellors }) => {
   const [autocomplete, setAutocomplete] = useState(null);
+
   const onLoad = (value) => {
     setAutocomplete(value);
   };
@@ -54,13 +40,13 @@ const GoogleMapAPI = () => {
         lng: 103.8198,
       }}
     >
-      {users.map((user) => (
+      {counsellors.map((counsellor) => (
         <Marker
           icon={
             "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
           }
-          position={user.address}
-          label={user.username}
+          position={counsellor.address}
+          label={counsellor.username}
         />
       ))}
       {placeInput.lat && (

@@ -30,7 +30,7 @@ export const UserResolver = {
     },
     async getCounsellors(parent, args, context) {
       const userDB = context.db.collection("User");
-      const counsellors = await userDB.find({ accountType: "COUNSELLOR" });
+      const counsellors = await userDB.find({ accountType: "Counsellor" });
       return counsellors.toArray();
     },
   },
