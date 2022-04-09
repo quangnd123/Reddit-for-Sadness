@@ -2,8 +2,23 @@ import React from "react";
 import { Grid, Header, Image, Button } from "semantic-ui-react";
 import styles from "./Profile.module.css";
 import { MdModeEditOutline } from "react-icons/fa";
+import { getUserAppointments } from "../../graphql/query.js";
+import { useQuery } from "@apollo/react-hooks";
 
 function ViewProfile({ id, email, username }) {
+  // //query all appointments of user with userID "id", uncomment to use
+  // const { loading, data, error } = useQuery(getUserAppointments, {
+  //   variables: { userID: id },
+  // });
+  // if (loading) {
+  //   return <h1>Loading...</h1>;
+  // }
+  // if (error) {
+  //   return <h1>Error...</h1>;
+  // }
+  // // data.getUserAppointments is an array of appointments, open website and  F12 to see the console.log
+  // console.log(data.getUserAppointments);
+
   return (
     <div>
       <Grid>
