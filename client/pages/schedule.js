@@ -8,7 +8,10 @@ import { useQuery } from "@apollo/react-hooks";
 import { getCounsellors } from "../graphql/query.js";
 import { GridColumn } from "semantic-ui-react";
 import SideBar from "../components/SideBar.js";
-import { Grid } from "semantic-ui-react";
+import { Grid, Input, Sticky } from "semantic-ui-react";
+import cssstyle from "../components/appointment.module.css";
+import Calendar from "react-calendar";
+
 const schedule = () => {
   const [placeInput, setPlaceInput] = useState({});
   const { loading, data, error } = useQuery(getCounsellors);
@@ -28,18 +31,31 @@ const schedule = () => {
     <div>
       <Slider slides={dataSlider} />
       <InputLocation />
-      <Grid>
-        <GridColumn width={13}>
+      {/* <Grid>
+        <GridColumn width={12} id={"abc"}>
           <GoogleMapAPI
             placeInput={placeInput}
             setPlaceInput={setPlaceInput}
             counsellors={counsellors}
           />
         </GridColumn>
-        <GridColumn width={3}>
+        <GridColumn width={4} color={"teal"} id={"abc"}>
           <SideBar placeInput={placeInput} counsellors={counsellors} />
         </GridColumn>
-      </Grid>
+      </Grid> */}
+      <div className={cssstyle.container}>
+        <div className={cssstyle.inputlocation}>
+          <GoogleMapAPI
+            placeInput={placeInput}
+            setPlaceInput={setPlaceInput}
+            counsellors={counsellors}
+            sticky
+          />
+        </div>
+        <div className={cssstyle.side}>
+            <SideBar placeInput={placeInput} counsellors={counsellors} />
+        </div>
+      </div>
     </div>
   );
 };

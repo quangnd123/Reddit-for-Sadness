@@ -1,0 +1,46 @@
+.input {
+  text-align: center;
+  font-weight: bolder;
+  font-size: larger;
+}
+
+.inputlocation {
+  width: 75%;
+  float: left;
+}
+
+.side {
+  width: 25%;
+  float: left;
+  min-height: 100vh;
+  background-color: #fefaec;
+}
+
+.counsellor {
+  border: solid 1.5px teal;
+  border-radius: 1%;
+  padding: 10px;
+  padding-bottom: 3px;
+  height: 10rem;
+  text-align: center;
+}
+
+.singlecounsellor {
+  width: 5rem;
+  height: 5rem;
+}
+
+.counsellordesc {
+  text-align: center;
+  padding-top: 0.8em;
+  line-height: 2rem;
+}
+
+.name {
+  font-weight: bolder;
+  font-size: larger;
+}
+
+.nonbold {
+  font-weight: normal;
+}

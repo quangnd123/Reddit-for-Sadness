@@ -1,4 +1,7 @@
 import React from "react";
+import styles from "./appointment.module.css";
+import { Grid, Input, Image, Modal, Button } from "semantic-ui-react";
+import Calendar from "react-calendar";
 
 function compare(a, b) {
   if (a.distance < b.distance) {
@@ -30,7 +33,11 @@ function getDistance(p1, p2) {
 }
 const SideBar = ({ placeInput, counsellors }) => {
   if (Object.keys(placeInput).length === 0) {
-    return <div>Please input your location</div>;
+    return (
+      <div className={styles.input}>
+        Available counsellors will be displayed below
+      </div>
+    );
   }
   console.log(placeInput);
   counsellors.forEach((counsellor) => {
@@ -38,16 +45,45 @@ const SideBar = ({ placeInput, counsellors }) => {
   });
   counsellors.sort(compare);
   return (
-    <div>
+    <>
       {counsellors.map((counsellor) => (
-        <div>
-          <text>counsellor's name: {counsellor.username}</text>
-          <br></br>
-          <text>distance: {counsellor.distance} m</text>
-          <br></br>
+        <div className={styles.counsellor}>
+          <Image
+            floated="left"
+            src="https://avatarfiles.alphacoders.com/837/thumb-83705.png"
+            circular
+            size="tiny"
+          />
+          <div className={styles.counsellordesc}>
+            <text className={styles.name}>
+              Counsellor's name:
+              <span className={styles.nonbold}> {counsellor.username}</span>
+            </text>
+            <br></br>
+            <text className={styles.name}>
+              Distance:{" "}
+              <span className={styles.nonbold}>
+                {(counsellor.distance / 1000).toFixed(2)}km
+              </span>
+            </text>
+            <br></br>
+            <Modal
+              trigger={<Button>Make Appointment</Button>}
+              header="Available Timings"
+              content="Call Benjamin regarding the reports."
+              actions={[
+                "Cancel",
+                { key: "done", content: "Done", positive: true },
+              ]}
+            >
+              <Modal.Content>
+                <Calendar />
+              </Modal.Content>
+            </Modal>
+          </div>
         </div>
       ))}
-    </div>
+    </>
   );
 };
 
