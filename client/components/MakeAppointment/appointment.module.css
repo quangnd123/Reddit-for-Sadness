@@ -69,3 +69,15 @@
 .mapcounsellor {
   font-size: small;
 }
+
+.cal {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  /* padding-right: 25%; */
+}
+
+.calDate {
+  flex-basis: 100%;
+}

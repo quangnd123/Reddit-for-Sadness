@@ -26,6 +26,7 @@
     "lodash": "^4.17.21",
     "mongodb": "^4.3.1",
     "mongoose": "^6.2.1",
-    "react-calendar": "^3.7.0"
+    "react-calendar": "^3.7.0",
+    "react-datetime-picker": "^3.5.0"
   }
 }

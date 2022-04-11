@@ -1,12 +1,22 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, Component } from "react";
 import { Grid, Input, Image, Modal, Button } from "semantic-ui-react";
 import styles from "../appointment.module.css";
-import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { AuthContext } from "../../../context/auth.js";
+import Calendar from "react-calendar";
 
 function CounsellorSide({ username, distance }) {
   const { user } = useContext(AuthContext);
+  console.log(user);
+
+  const [date, setDate] = useState(new Date());
+
+  const onChange = (date) => {
+    setDate(date);
+  };
+
+  const [open, setOpen] = useState(false);
+
   return (
     <div className={styles.counsellor}>
       <Image
@@ -31,16 +41,25 @@ function CounsellorSide({ username, distance }) {
         {user && (
           <Modal
             trigger={<Button>Make Appointment</Button>}
-            header="Available Timings"
-            content="Call Benjamin regarding the reports."
-            actions={[
-              "Cancel",
-              { key: "done", content: "Done", positive: true },
-            ]}
+            onClose={() => setOpen(false)}
+            onOpen={() => setOpen(true)}
+            open={open}
           >
-            <Modal.Content className={styles.calendar}>
-              <Calendar />
+            <Modal.Header>Available Timings!</Modal.Header>
+            <Modal.Content>
+              <div className={styles.cal}>
+                <Calendar onChange={onChange} value={date} />
+                <div className={styles.calDate}>
+                  {date.toString().slice(4, 15)}
+                </div>
+              </div>
             </Modal.Content>
+            <Modal.Actions>
+              <Button onClick={() => setOpen(false)}>Cancel</Button>
+              <Button type="submit" onClick={() => setOpen(false)} positive>
+                Confirm
+              </Button>
+            </Modal.Actions>
           </Modal>
         )}
       </div>
