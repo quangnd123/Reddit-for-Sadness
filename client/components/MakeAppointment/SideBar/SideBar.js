@@ -1,7 +1,9 @@
 import React from "react";
-import styles from "./appointment.module.css";
-import { Grid, Input, Image, Modal, Button } from "semantic-ui-react";
+import styles from "../appointment.module.css";
 import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+import SideBarErrorInput from "./SideBarErrorInput";
+import CounsellorSide from "./CounsellorSide";
 
 function compare(a, b) {
   if (a.distance < b.distance) {
@@ -31,6 +33,7 @@ function getDistance(p1, p2) {
   var d = R * c;
   return d; // returns the distance in meter
 }
+
 const SideBar = ({ placeInput, counsellors }) => {
   if (Object.keys(placeInput).length === 0) {
     return (
@@ -38,6 +41,13 @@ const SideBar = ({ placeInput, counsellors }) => {
         Available counsellors will be displayed below
       </div>
     );
+  } else if (
+    placeInput.lng <= 103.633 ||
+    placeInput.lng >= 104.025988 ||
+    placeInput.lat >= 1.467819 ||
+    placeInput.lat <= 1.2345
+  ) {
+    return <SideBarErrorInput />;
   }
   console.log(placeInput);
   counsellors.forEach((counsellor) => {
@@ -48,41 +58,10 @@ const SideBar = ({ placeInput, counsellors }) => {
     <>
       <div className={styles.input}>Your nearest counsellors are:</div>
       {counsellors.map((counsellor) => (
-        <div className={styles.counsellor}>
-          <Image
-            floated="left"
-            src="https://avatarfiles.alphacoders.com/837/thumb-83705.png"
-            circular
-            size="tiny"
-          />
-          <div className={styles.counsellordesc}>
-            <text className={styles.name}>
-              Counsellor's name:
-              <span className={styles.nonbold}> {counsellor.username}</span>
-            </text>
-            <br></br>
-            <text className={styles.name}>
-              Distance:{" "}
-              <span className={styles.nonbold}>
-                {(counsellor.distance / 1000).toFixed(2)}km
-              </span>
-            </text>
-            <br></br>
-            <Modal
-              trigger={<Button>Make Appointment</Button>}
-              header="Available Timings"
-              content="Call Benjamin regarding the reports."
-              actions={[
-                "Cancel",
-                { key: "done", content: "Done", positive: true },
-              ]}
-            >
-              <Modal.Content>
-                <Calendar />
-              </Modal.Content>
-            </Modal>
-          </div>
-        </div>
+        <CounsellorSide
+          username={counsellor.username}
+          distance={counsellor.distance}
+        />
       ))}
     </>
   );

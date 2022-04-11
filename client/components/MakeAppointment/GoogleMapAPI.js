@@ -80,6 +80,7 @@ const GoogleMapAPI = ({ setPlaceInput, placeInput, counsellors }) => {
             marginLeft: "-120px",
           }}
           placeholder="Where are you?"
+          focus
         />
       </Autocomplete>
     </GoogleMap>

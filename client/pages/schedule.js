@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import GoogleMapAPI from "../components/GoogleMapAPI.js";
+import GoogleMapAPI from "../components/MakeAppointment/GoogleMapAPI.js";
 import Slider from "../components/Slider/Slider";
 import dataSlider from "../components/Slider/dataSlider";
 import styles from "../components/Slider/Slider.module.css";
@@ -7,10 +7,9 @@ import InputLocation from "../components/Location/InputLocation";
 import { useQuery } from "@apollo/react-hooks";
 import { getCounsellors } from "../graphql/query.js";
 import { GridColumn } from "semantic-ui-react";
-import SideBar from "../components/SideBar.js";
+import SideBar from "../components/MakeAppointment/SideBar/SideBar.js";
 import { Grid, Input, Sticky } from "semantic-ui-react";
-import cssstyle from "../components/appointment.module.css";
-import Calendar from "react-calendar";
+import cssstyle from "../components/MakeAppointment/appointment.module.css";
 
 const schedule = () => {
   const [placeInput, setPlaceInput] = useState({});
