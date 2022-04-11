@@ -5,7 +5,7 @@ import {
   GoogleMap,
   Marker,
 } from "@react-google-maps/api";
-import { Input } from "semantic-ui-react";
+import { Input, Icon } from "semantic-ui-react";
 
 const GoogleMapAPI = ({ setPlaceInput, placeInput, counsellors }) => {
   const [autocomplete, setAutocomplete] = useState(null);
