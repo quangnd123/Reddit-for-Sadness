@@ -5,7 +5,7 @@ import {
   GoogleMap,
   Marker,
 } from "@react-google-maps/api";
-import { Input, Icon } from "semantic-ui-react";
+import { Input, Icon, Popup, Button } from "semantic-ui-react";
 import styles from "./appointment.module.css";
 
 const GoogleMapAPI = ({ setPlaceInput, placeInput, counsellors }) => {
@@ -52,17 +52,17 @@ const GoogleMapAPI = ({ setPlaceInput, placeInput, counsellors }) => {
           />
         ))}
         {placeInput.lat && (
-          <Marker
-            icon={{
-              path: "M8 12l-4.7023 2.4721.898-5.236L.3916 5.5279l5.2574-.764L8 0l2.3511 4.764 5.2574.7639-3.8043 3.7082.898 5.236z",
-              fillColor: "yellow",
-              fillOpacity: 0.9,
-              strokeColor: "gold",
-              strokeWeight: 2,
-              scale: 2,
-            }}
-            position={placeInput}
-          />
+              <Marker
+                icon={{
+                  path: "M8 12l-4.7023 2.4721.898-5.236L.3916 5.5279l5.2574-.764L8 0l2.3511 4.764 5.2574.7639-3.8043 3.7082.898 5.236z",
+                  fillColor: "yellow",
+                  fillOpacity: 1,
+                  strokeColor: "gold",
+                  strokeWeight: 2,
+                  scale: 2,
+                }}
+                position={placeInput}
+              />
         )}
         <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
           <Input

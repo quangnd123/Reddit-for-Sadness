@@ -14,7 +14,7 @@ function ModalSurvey({ values, setValues, onSubmit }) {
   const [open, setOpen] = useState(false);
   return (
     <Modal
-      trigger={<Button>Show Modal</Button>}
+      trigger={<Button>Do our survey!</Button>}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
