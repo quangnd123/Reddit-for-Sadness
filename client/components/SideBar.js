@@ -46,6 +46,7 @@ const SideBar = ({ placeInput, counsellors }) => {
   counsellors.sort(compare);
   return (
     <>
+      <div className={styles.input}>Your nearest counsellors are:</div>
       {counsellors.map((counsellor) => (
         <div className={styles.counsellor}>
           <Image

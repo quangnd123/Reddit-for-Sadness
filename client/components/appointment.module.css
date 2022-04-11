@@ -2,6 +2,7 @@
   text-align: center;
   font-weight: bolder;
   font-size: larger;
+  padding-bottom: 5%;
 }
 
 .inputlocation {
@@ -12,13 +13,15 @@
 .side {
   width: 25%;
   float: left;
-  min-height: 100vh;
+  height: 100vh;
   background-color: #fefaec;
+  overflow: scroll;
 }
 
 .counsellor {
   border: solid 1.5px teal;
   border-radius: 1%;
+  border-bottom: 0;
   padding: 10px;
   padding-bottom: 3px;
   height: 10rem;
