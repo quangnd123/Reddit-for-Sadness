@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Grid, Input, Image, Modal, Button } from "semantic-ui-react";
 import styles from "../appointment.module.css";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import { AuthContext } from "../../../context/auth.js";
 
 function CounsellorSide({ username, distance }) {
+  const { user } = useContext(AuthContext);
   return (
     <div className={styles.counsellor}>
       <Image
@@ -26,16 +28,21 @@ function CounsellorSide({ username, distance }) {
           </span>
         </text>
         <br></br>
-        <Modal
-          trigger={<Button>Make Appointment</Button>}
-          header="Available Timings"
-          content="Call Benjamin regarding the reports."
-          actions={["Cancel", { key: "done", content: "Done", positive: true }]}
-        >
-          <Modal.Content className={styles.calendar}>
-            <Calendar />
-          </Modal.Content>
-        </Modal>
+        {user && (
+          <Modal
+            trigger={<Button>Make Appointment</Button>}
+            header="Available Timings"
+            content="Call Benjamin regarding the reports."
+            actions={[
+              "Cancel",
+              { key: "done", content: "Done", positive: true },
+            ]}
+          >
+            <Modal.Content className={styles.calendar}>
+              <Calendar />
+            </Modal.Content>
+          </Modal>
+        )}
       </div>
     </div>
   );
