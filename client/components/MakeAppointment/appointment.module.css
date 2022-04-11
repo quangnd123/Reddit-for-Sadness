@@ -1,7 +1,8 @@
 .input {
   text-align: center;
   font-weight: bolder;
-  font-size: larger;
+  font-size: x-large;
+  line-height: normal;
   padding-bottom: 2%;
   padding-top: 2%;
 }
@@ -54,10 +55,11 @@
 .errorinput {
   text-align: center;
   font-weight: bolder;
-  font-size: larger;
   padding-bottom: 2%;
   padding-top: 2%;
   color: red;
+  font-size: x-large;
+  line-height: normal;
 }
 
 .googlemap {
