@@ -51,6 +51,7 @@ function CounsellorSide({ username, distance }) {
                 <Calendar onChange={onChange} value={date} />
                 <div className={styles.calDate}>
                   {date.toString().slice(4, 15)}
+                  
                 </div>
               </div>
             </Modal.Content>

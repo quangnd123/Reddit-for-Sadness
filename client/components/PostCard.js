@@ -5,10 +5,34 @@ import Link from "next/link";
 import { AuthContext } from "../context/auth";
 import { LikeButton } from "./LikeButton.js";
 import DeleteButton from "./DeleteButton.js";
+import { useQuery } from "@apollo/react-hooks";
+import { getCounsellors } from "../graphql/query.js";
+
 const PostCard = ({
   post: { title, text, _id, username, userID, likes, count },
 }) => {
   const { user } = useContext(AuthContext);
+  if (user) {
+    const userid = user._id;
+  }
+
+  const { loading, data, error } = useQuery(getCounsellors);
+  if (loading) {
+    return <h1>Query Loading ...</h1>;
+  }
+  if (error) {
+    return <h1>Query Error ...</h1>;
+  }
+  const counsellors = data.getCounsellors;
+  let isCounsellor = false;
+
+  for (let i = 0; i < counsellors.length; i++) {
+    if (userid === counsellors[i]._id) {
+      console.log("LOLLLLL");
+      isCounsellor = true;
+    }
+  }
+
   return (
     <Card fluid>
       <Card.Content>
@@ -33,7 +57,9 @@ const PostCard = ({
               </Button>
             </Button>
           </Link>
-          {user && user._id === userID && <DeleteButton postID={_id} />}
+          {user && (user._id === userID || isCounsellor) && (
+            <DeleteButton postID={_id} />
+          )}
         </div>
       </Card.Content>
     </Card>
