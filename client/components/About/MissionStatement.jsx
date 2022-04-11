@@ -6,7 +6,7 @@ function MissionStatement() {
   return (
     <>
       <div className={styles.statement}>
-        <b>Mission Statement</b>
+        <b>About Us</b>
       </div>
     </>
   );
