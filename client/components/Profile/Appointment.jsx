@@ -57,11 +57,11 @@ function Appointment({ counsellorData }) {
           wrapped
         />
         <Modal.Description>
-          <Grid centered>
+          <Grid>
             <Grid.Row>
               {appointmentData.map((appointment, index) => {
                 return (
-                  <Grid.Column width={15}>
+                  <Grid.Column width={8}>
                     <Card>
                       <Card.Content>
                         <Card.Header content={`Appointment ${index + 1}`} />
