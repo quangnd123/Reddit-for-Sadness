@@ -110,7 +110,7 @@ export const UserResolver = {
       if (!existingUser) {
         throw new UserInputError("Email does not exist", {
           errors: {
-            email: "Email does not exitst",
+            email: "Email does not exist",
           },
         });
       }

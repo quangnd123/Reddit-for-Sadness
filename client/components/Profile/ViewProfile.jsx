@@ -5,10 +5,11 @@ import { MdModeEditOutline } from "react-icons/fa";
 import EditProfileButton from "./EditProfileButton";
 import ChangePassword from "./ChangePassword";
 import Appointment from "./Appointment";
-import { getUserAppointments } from "../../graphql/query.js";
+import { getCounsellors } from "../../graphql/query.js";
 import { useQuery } from "@apollo/react-hooks";
 import { AuthContext } from "../../context/auth.js";
 import { useRouter } from "next/router";
+import CounsellorSide from "../MakeAppointment/SideBar/CounsellorSide";
 function ViewProfile({
   id,
   email,
@@ -25,6 +26,16 @@ function ViewProfile({
     router.push("/login");
   }
 
+  const { loading, data, error } = useQuery(getCounsellors);
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
+  if (error) {
+    return <h1>Error...</h1>;
+  }
+  const counsellors = data.getCounsellors;
+  console.log(counsellors);
+
   return (
     <div>
       <Grid>
@@ -35,7 +46,10 @@ function ViewProfile({
               <br />
               <ChangePassword text={"Change Password"} />
               <br />
-              <Appointment text={"View/Change Appointments"} />
+              <Appointment
+                text={"View/Change Appointments"}
+                counsellorData={counsellors}
+              />
             </div>
           </Grid.Column>
           <Grid.Column className={styles.profile} width="6">
