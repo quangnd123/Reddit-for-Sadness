@@ -61,6 +61,8 @@ const SideBar = ({ placeInput, counsellors }) => {
         <CounsellorSide
           username={counsellor.username}
           distance={counsellor.distance}
+          counsellorID={counsellor._id}
+          address={counsellor.address}
         />
       ))}
     </>

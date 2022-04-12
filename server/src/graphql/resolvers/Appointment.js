@@ -24,58 +24,31 @@ export const AppointmentResolver = {
       context
     ) {
       const appointmentDB = context.db.collection("Appointment");
-      var startDate = date;
-      var endDate = date;
-      startDate.setHours(startDate.getHours() - 1);
-      endDate.setHours(endDate.getHours() + 1);
+      console.log(date);
       const existingAppointmentUser = await appointmentDB.findOne({
         userID: ObjectId(userID),
-        date: {
-          $gte: startDate,
-          $lt: endDate,
-        },
+        date: date,
       });
-
+      console.log(existingAppointmentUser);
       if (existingAppointmentUser) {
-        throw new UserInputError(
-          "You have another appointment which causes clash",
-          {
-            errors: {
-              email: "Schedule clash",
-            },
-          }
-        );
-      }
-
-      const existingAppointmentCounsellor = await appointmentDB.findOne({
-        counsellorID: ObjectId(counsellorID),
-        date: {
-          $gte: startDate,
-          $lt: endDate,
-        },
-      });
-
-      if (existingAppointmentCounsellor) {
-        throw new UserInputError(
-          "The cousellor have another appointment which causes clash",
-          {
-            errors: {
-              email: "Schedule clash",
-            },
-          }
-        );
+        throw new UserInputError("You already have appointment on this day", {
+          errors: {
+            message: "You already have appointment on this day",
+          },
+        });
       }
 
       const newAppointment = new Appointment({
         userID: userID,
         counsellorID: counsellorID,
         address: address,
-        date: Date.now(),
+        date: date,
       });
       const { insertedId } = await appointmentDB.insertOne(newAppointment);
       const appointment = await appointmentDB.findOne({
         _id: ObjectId(insertedId),
       });
+      console.log(appointment);
       return appointment;
     },
   },

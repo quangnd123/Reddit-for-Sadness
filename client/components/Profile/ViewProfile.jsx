@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Grid, Header, Image, Button, Modal } from "semantic-ui-react";
 import styles from "./Profile.module.css";
 import { MdModeEditOutline } from "react-icons/fa";
@@ -7,7 +7,8 @@ import ChangePassword from "./ChangePassword";
 import Appointment from "./Appointment";
 import { getUserAppointments } from "../../graphql/query.js";
 import { useQuery } from "@apollo/react-hooks";
-
+import { AuthContext } from "../../context/auth.js";
+import { useRouter } from "next/router";
 function ViewProfile({
   id,
   email,
@@ -18,18 +19,11 @@ function ViewProfile({
   happyscale,
 }) {
   const [open, setOpen] = React.useState(false);
-  // //query all appointments of user with userID "id", uncomment to use
-  // const { loading, data, error } = useQuery(getUserAppointments, {
-  //   variables: { userID: id },
-  // });
-  // if (loading) {
-  //   return <h1>Loading...</h1>;
-  // }
-  // if (error) {
-  //   return <h1>Error...</h1>;
-  // }
-  // // data.getUserAppointments is an array of appointments, open website and  F12 to see the console.log
-  // console.log(data.getUserAppointments);
+  const { user } = useContext(AuthContext);
+  const router = useRouter();
+  if (!user) {
+    router.push("/login");
+  }
 
   return (
     <div>

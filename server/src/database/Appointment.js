@@ -8,7 +8,7 @@ const appointmentSchema = new Schema({
     lat: { type: String },
     lng: { type: String },
   },
-  date: { type: Date },
+  date: { type: String },
 });
 
 export default model("Appointment", appointmentSchema);
