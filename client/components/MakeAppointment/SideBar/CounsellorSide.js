@@ -9,7 +9,9 @@ import { useMutation } from "@apollo/react-hooks";
 
 function CounsellorSide({ username, distance, counsellorID, address }) {
   const { user } = useContext(AuthContext);
-  const [date, setDate] = useState("");
+  var start = new Date();
+  start.setUTCHours(0, 0, 0, 0);
+  const [date, setDate] = useState(start);
   const [serverErrors, setServerErrors] = useState({});
   const [success, setSuccess] = useState("");
   const onChange = (date) => {

@@ -27,7 +27,7 @@ export const AppointmentResolver = {
       console.log(date);
       const existingAppointmentUser = await appointmentDB.findOne({
         userID: ObjectId(userID),
-        date: date,
+        date: new Date(date),
       });
       console.log(existingAppointmentUser);
       if (existingAppointmentUser) {
