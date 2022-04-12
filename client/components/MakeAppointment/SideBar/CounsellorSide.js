@@ -1,5 +1,5 @@
 import React, { useContext, useState, Component } from "react";
-import { Grid, Input, Image, Modal, Button } from "semantic-ui-react";
+import { Grid, Input, Image, Modal, Button, Alert } from "semantic-ui-react";
 import styles from "../appointment.module.css";
 import "react-calendar/dist/Calendar.css";
 import { AuthContext } from "../../../context/auth.js";
@@ -77,14 +77,25 @@ function CounsellorSide({ username, distance, counsellorID, address }) {
             <Modal.Header>Available Timings!</Modal.Header>
             <Modal.Content>
               <div className={styles.cal}>
-                <Calendar onChange={onChange} value={date} />
+                <Calendar
+                  onChange={onChange}
+                  value={date}
+                  calendarType="US"
+                  minDate={new Date(2022, 3, 13)}
+                />
                 <div className={styles.calDate}>
                   {date.toString().slice(4, 15)}
                 </div>
               </div>
               <div>
                 <p>{serverErrors.message}</p>
-                <p>{success}</p>
+                <p>
+                  {success && (
+                    <div className={styles.successMessage}>
+                      Appointment booked successfully
+                    </div>
+                  )}
+                </p>
               </div>
             </Modal.Content>
             <Modal.Actions>

@@ -26,7 +26,7 @@ function Appointment({ counsellorData }) {
     return <h1>Error...</h1>;
   }
   const userAppointments = data.getUserAppointments;
-  //console.log(userAppointments);
+  console.log(userAppointments);
   // console.log(counsellorData);
 
   const appointmentData = [];
@@ -57,11 +57,11 @@ function Appointment({ counsellorData }) {
           wrapped
         />
         <Modal.Description>
-          <Grid padded="vertically">
+          <Grid centered>
             <Grid.Row>
               {appointmentData.map((appointment, index) => {
                 return (
-                  <Grid.Column width={8}>
+                  <Grid.Column width={15}>
                     <Card>
                       <Card.Content>
                         <Card.Header content={`Appointment ${index + 1}`} />

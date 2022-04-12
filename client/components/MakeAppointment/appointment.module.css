@@ -81,3 +81,10 @@
 .calDate {
   flex-basis: 100%;
 }
+
+.successMessage {
+  text-align: center;
+  font-size: xx-large;
+  font-weight: bolder;
+  color: rgb(164, 212, 92);
+}
