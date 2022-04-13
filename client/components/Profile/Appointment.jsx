@@ -27,16 +27,24 @@ function Appointment({ counsellorData }) {
   }
   const userAppointments = data.getUserAppointments;
   console.log(userAppointments);
-  // console.log(counsellorData);
+  console.log(counsellorData);
 
   const appointmentData = [];
+
+  Date.prototype.addHours = function (h) {
+    this.setTime(this.getTime() + h * 60 * 60 * 1000);
+    return this;
+  };
 
   for (let j = 0; j < userAppointments.length; j++) {
     for (let i = 0; i < counsellorData.length; i++) {
       if (userAppointments[j].counsellorID === counsellorData[i]._id) {
         appointmentData.push({
           counsellorName: counsellorData[i].username,
-          appointmentDate: userAppointments[j].date.slice(0, 10),
+          appointmentDate: new Date(userAppointments[j].date)
+            .addHours(8)
+            .toString()
+            .slice(4, 15),
         });
       }
     }
