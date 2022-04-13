@@ -5,7 +5,7 @@ import { Divider, Grid, Header } from "semantic-ui-react";
 function Stats() {
   return (
     <div>
-      <h2 className={styles.stats}>Reddit for sadness by numbers</h2>
+      <h2 className={styles.stats}>Mental Health Savers by numbers</h2>
       <Divider />
       <Grid columns={3} divided>
         <Grid.Row className={styles.rowStats}>

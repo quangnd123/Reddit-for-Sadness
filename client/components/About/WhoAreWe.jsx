@@ -19,7 +19,7 @@ function WhoAreWe() {
     >
       <div className={styles.whoStatement}>Who We Are</div>
       <div className={styles.aboutStatement}>
-        Reddit for sadness was founded by a group of NTU students
+        Mental Health Savers was founded by a group of NTU students
       </div>
       <Divider />
     </div>
