@@ -6,23 +6,43 @@
 .profile {
   padding-top: 2rem;
   padding-left: 10rem;
-  margin-left: 15rem;
-}
-
-.profileImage {
-  max-width: 10%;
-}
-
-.profileEdit {
-  text-align: center;
-  padding-top: 50rem;
-}
-
-.editButtons {
-  background-color: white;
+  margin-left: 8rem;
 }
 
 .links {
+  margin-left: 0.25rem;
   display: block;
   color: black;
+}
+
+.data {
+  /*border: solid 1px red;*/
+  padding-top: 15px;
+  padding-left: 18%;
+}
+
+.info {
+  font-weight: 100;
+  font-size: large;
+  float: right;
+  margin-right: 120px;
+}
+
+.image {
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+.editProfileModal {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 1%;
+}
+.editProfileModalInput {
+  text-align: center;
+  padding-bottom: 1%;
+}
+
+.editProfileModalInputField {
+  margin-left: 231px;
 }

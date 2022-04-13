@@ -39,7 +39,7 @@ function InputLocation() {
       fluid
     >
       <Header as="h1">Planning an appointment with the counsellor?</Header>
-      <Grid columns="equal" centered>
+      {/* <Grid columns="equal" centered>
         <Grid.Row verticalAlign="middle" columns={2}>
           <Grid.Column width={4}>
             <Image
@@ -48,7 +48,7 @@ function InputLocation() {
               rounded
             />
           </Grid.Column>
-          {/* <Grid.Column width={6}>
+          <Grid.Column width={6}>
             <Form
               onSubmit={formSubmitHandler}
               error={isErrorInput}
@@ -85,9 +85,9 @@ function InputLocation() {
                 )}
               </Form.Field>
             </Form>
-          </Grid.Column> */}
+          </Grid.Column>
         </Grid.Row>
-      </Grid>
+      </Grid> */}
     </Container>
   );
 }

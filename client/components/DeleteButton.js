@@ -23,7 +23,7 @@ const DeleteButton = ({ postID: _id, commentID: commentID }) => {
     variables: { postID: _id, commentID: commentID },
   });
   return (
-    <div>
+    <>
       <Button color="red" floated="right" onClick={() => setConfirmOpen(true)}>
         <Icon name="trash" style={{ margin: 0 }} />
       </Button>
@@ -32,7 +32,7 @@ const DeleteButton = ({ postID: _id, commentID: commentID }) => {
         onCancel={() => setConfirmOpen(false)}
         onConfirm={deleteMutation}
       />
-    </div>
+    </>
   );
 };
 

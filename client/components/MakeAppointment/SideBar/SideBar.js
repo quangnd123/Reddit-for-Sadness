@@ -1,4 +1,9 @@
 import React from "react";
+import styles from "../appointment.module.css";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+import SideBarErrorInput from "./SideBarErrorInput";
+import CounsellorSide from "./CounsellorSide";
 
 function compare(a, b) {
   if (a.distance < b.distance) {
@@ -28,9 +33,21 @@ function getDistance(p1, p2) {
   var d = R * c;
   return d; // returns the distance in meter
 }
+
 const SideBar = ({ placeInput, counsellors }) => {
   if (Object.keys(placeInput).length === 0) {
-    return <div>Please input your location</div>;
+    return (
+      <div className={styles.input}>
+        Available counsellors will be displayed below
+      </div>
+    );
+  } else if (
+    placeInput.lng <= 103.633 ||
+    placeInput.lng >= 104.025988 ||
+    placeInput.lat >= 1.467819 ||
+    placeInput.lat <= 1.2345
+  ) {
+    return <SideBarErrorInput />;
   }
   console.log(placeInput);
   counsellors.forEach((counsellor) => {
@@ -38,16 +55,17 @@ const SideBar = ({ placeInput, counsellors }) => {
   });
   counsellors.sort(compare);
   return (
-    <div>
+    <>
+      <div className={styles.input}>Your nearest counsellors are:</div>
       {counsellors.map((counsellor) => (
-        <div>
-          <text>counsellor's name: {counsellor.username}</text>
-          <br></br>
-          <text>distance: {counsellor.distance} m</text>
-          <br></br>
-        </div>
+        <CounsellorSide
+          username={counsellor.username}
+          distance={counsellor.distance}
+          counsellorID={counsellor._id}
+          address={counsellor.address}
+        />
       ))}
-    </div>
+    </>
   );
 };
 

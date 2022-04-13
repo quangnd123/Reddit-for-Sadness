@@ -20,9 +20,12 @@
     "moment": "^2.29.1",
     "next": "12.1.0",
     "react": "17.0.2",
+    "react-calendar": "^3.7.0",
+    "react-datetime-picker": "^3.5.0",
     "react-dom": "17.0.2",
     "react-geocode": "^0.2.3",
     "react-icons": "^4.3.1",
+    "react-popup": "^0.11.0",
     "react-transition-group": "^4.4.2",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.1.2"

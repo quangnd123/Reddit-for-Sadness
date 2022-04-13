@@ -34,8 +34,9 @@ export function MenuBar() {
         <Link href={`/user/${user._id}`} passHref>
           <Menu.Item name={user.username} />
         </Link>
-
-        <Menu.Item name="Logout" onClick={logout} />
+        <Link href={`/login`} passHref>
+          <Menu.Item name="Logout" onClick={logout} />
+        </Link>
       </Menu.Menu>
     </Menu>
   ) : (

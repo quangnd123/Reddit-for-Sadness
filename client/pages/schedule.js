@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import GoogleMapAPI from "../components/GoogleMapAPI.js";
+import GoogleMapAPI from "../components/MakeAppointment/GoogleMapAPI.js";
 import Slider from "../components/Slider/Slider";
 import dataSlider from "../components/Slider/dataSlider";
 import styles from "../components/Slider/Slider.module.css";
@@ -7,8 +7,10 @@ import InputLocation from "../components/Location/InputLocation";
 import { useQuery } from "@apollo/react-hooks";
 import { getCounsellors } from "../graphql/query.js";
 import { GridColumn } from "semantic-ui-react";
-import SideBar from "../components/SideBar.js";
-import { Grid } from "semantic-ui-react";
+import SideBar from "../components/MakeAppointment/SideBar/SideBar.js";
+import { Grid, Input, Sticky } from "semantic-ui-react";
+import cssstyle from "../components/MakeAppointment/appointment.module.css";
+
 const schedule = () => {
   const [placeInput, setPlaceInput] = useState({});
   const { loading, data, error } = useQuery(getCounsellors);
@@ -28,18 +30,31 @@ const schedule = () => {
     <div>
       <Slider slides={dataSlider} />
       <InputLocation />
-      <Grid>
-        <GridColumn width={13}>
+      {/* <Grid>
+        <GridColumn width={12} id={"abc"}>
           <GoogleMapAPI
             placeInput={placeInput}
             setPlaceInput={setPlaceInput}
             counsellors={counsellors}
           />
         </GridColumn>
-        <GridColumn width={3}>
+        <GridColumn width={4} color={"teal"} id={"abc"}>
           <SideBar placeInput={placeInput} counsellors={counsellors} />
         </GridColumn>
-      </Grid>
+      </Grid> */}
+      <div className={cssstyle.container}>
+        <div className={cssstyle.inputlocation}>
+          <GoogleMapAPI
+            placeInput={placeInput}
+            setPlaceInput={setPlaceInput}
+            counsellors={counsellors}
+            sticky
+          />
+        </div>
+        <div className={cssstyle.side}>
+            <SideBar placeInput={placeInput} counsellors={counsellors} />
+        </div>
+      </div>
     </div>
   );
 };

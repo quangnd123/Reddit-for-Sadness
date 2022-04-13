@@ -8,10 +8,11 @@ function WhoAreWe() {
       style={{
         backgroundImage:
           "url(" +
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlImCBRR3R-7BpGJzRbjT5MI9646CEmqwkQA&usqp=CAU" +
+          "https://c4.wallpaperflare.com/wallpaper/770/229/111/trees-singapore-architecture-nature-wallpaper-preview.jpg" +
           ")",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
         width: "100%",
         height: "100%",
       }}

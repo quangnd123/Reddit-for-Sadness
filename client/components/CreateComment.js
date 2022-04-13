@@ -34,7 +34,7 @@ const CreateComment = ({ postID: _id }) => {
               disabled={comment.trim() === ""}
               onClick={submitComment}
             >
-              Subbmit
+              Submit
             </button>
           </div>
         </Form>

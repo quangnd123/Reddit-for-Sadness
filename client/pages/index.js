@@ -16,7 +16,7 @@ export default function Home() {
   const posts = data?.getPosts;
 
   return (
-    <Grid columns={1}>
+    <Grid columns={1} padded centered>
       <Grid.Row>
         {user && (
           <Grid.Column>
@@ -25,8 +25,10 @@ export default function Home() {
         )}
         {posts &&
           posts.map((post) => (
-            <Grid.Column key={post.id}>
-              <PostCard post={post} />
+            <Grid.Column key={post.id} width={15}>
+              <div style={{ padding: "25px 10px" }}>
+                <PostCard post={post} />
+              </div>
             </Grid.Column>
           ))}
       </Grid.Row>

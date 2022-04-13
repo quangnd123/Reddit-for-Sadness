@@ -28,9 +28,25 @@ const User = () => {
   console.log(data);
   const User = data.getUser;
 
+  const happy = parseInt(User.happyScale);
+  const socialIntel = parseInt(User.socialIntelligence);
+  const cog = parseInt(User.cognitiveEfficacy);
+  const selfEsteem = parseInt(User.selfEsteem);
+  const emotionalDamage = parseInt(User.emotionalIntelligence);
+  const happyscale =
+    (happy + socialIntel + cog + selfEsteem + emotionalDamage) / 5;
+
   return (
     <h3>
-      <ViewProfile id={User._id} username={User.username} email={User.email} />
+      <ViewProfile
+        accountType={User.accountType}
+        id={User._id}
+        username={User.username}
+        email={User.email}
+        createdAt={User.createdAt}
+        surveyDate={User.surveyDate}
+        happyscale={happyscale}
+      />
     </h3>
   );
 };

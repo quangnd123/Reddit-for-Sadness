@@ -5,6 +5,8 @@ import { useMutation } from "@apollo/react-hooks";
 import { createPost } from "../graphql/mutation.js";
 import { useRouter } from "next/router";
 import { getPosts } from "../graphql/query.js";
+import styles from "./createPost.module.css";
+
 const PostForm = () => {
   const router = useRouter();
   const [serverErrors, setServerErrors] = useState({});
@@ -34,21 +36,34 @@ const PostForm = () => {
   }
   return (
     <div>
-      <Form onSubmit={onSubmit}>
-        <h2>Create a Post</h2>
-        <Form.Field>
-          <Form.Input
-            placeholder="title"
-            name="title"
-            onChange={onChange}
-            value={values.title}
-          />
-          <Form.Input placeholder="text" name="text" onChange={onChange} />
-          <Button type="submit" color="teal">
-            Submit
-          </Button>
-        </Form.Field>
-      </Form>
+      <div className={styles.form}>
+        <Form onSubmit={onSubmit}>
+          <h2 style={{ textAlign: "center" }}>Create a Post</h2>
+          <Form.Field>
+            <Form.Input
+              placeholder="Title"
+              name="title"
+              onChange={onChange}
+              value={values.title}
+              className={styles.formInput}
+            />
+            <Form.Input
+              placeholder="Text"
+              name="text"
+              onChange={onChange}
+              className={styles.formInput}
+            />
+            <Button
+              type="submit"
+              color="teal"
+              className={styles.formInput}
+              fluid
+            >
+              Submit
+            </Button>
+          </Form.Field>
+        </Form>
+      </div>
       {Object.keys(serverErrors).length > 0 && (
         <div className="ui error message">
           <ul className="list">

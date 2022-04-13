@@ -1,23 +1,40 @@
-import React from "react";
-import { Grid, Header, Image, Button } from "semantic-ui-react";
+import React, { useContext } from "react";
+import { Grid, Header, Image, Button, Modal } from "semantic-ui-react";
 import styles from "./Profile.module.css";
 import { MdModeEditOutline } from "react-icons/fa";
-import { getUserAppointments } from "../../graphql/query.js";
+import EditProfileButton from "./EditProfileButton";
+import ChangePassword from "./ChangePassword";
+import Appointment from "./Appointment";
+import { getCounsellors } from "../../graphql/query.js";
 import { useQuery } from "@apollo/react-hooks";
+import { AuthContext } from "../../context/auth.js";
+import { useRouter } from "next/router";
+import CounsellorSide from "../MakeAppointment/SideBar/CounsellorSide";
+function ViewProfile({
+  id,
+  email,
+  username,
+  createdAt,
+  accountType,
+  surveyDate,
+  happyscale,
+}) {
+  const [open, setOpen] = React.useState(false);
+  const { user } = useContext(AuthContext);
+  const router = useRouter();
+  if (!user) {
+    router.push("/login");
+  }
 
-function ViewProfile({ id, email, username }) {
-  // //query all appointments of user with userID "id", uncomment to use
-  // const { loading, data, error } = useQuery(getUserAppointments, {
-  //   variables: { userID: id },
-  // });
-  // if (loading) {
-  //   return <h1>Loading...</h1>;
-  // }
-  // if (error) {
-  //   return <h1>Error...</h1>;
-  // }
-  // // data.getUserAppointments is an array of appointments, open website and  F12 to see the console.log
-  // console.log(data.getUserAppointments);
+  const { loading, data, error } = useQuery(getCounsellors);
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
+  if (error) {
+    return <h1>Error...</h1>;
+  }
+  const counsellors = data.getCounsellors;
+  console.log(counsellors);
 
   return (
     <div>
@@ -25,40 +42,44 @@ function ViewProfile({ id, email, username }) {
         <Grid.Row>
           <Grid.Column className={styles.change} width="4">
             <div className={styles.links}>
-              <a href="" className={styles.links}>
-                Edit Profile
-              </a>
-              <a href="" className={styles.links}>
-                Change Password
-              </a>
-              <a href="" className={styles.links}>
-                View/Change Appointments
-              </a>
+              <EditProfileButton text={"Edit Profile"} />
+              <br />
+              <ChangePassword text={"Change Password"} />
+              <br />
+              <Appointment
+                text={"View/Change Appointments"}
+                counsellorData={counsellors}
+              />
             </div>
           </Grid.Column>
-          <Grid.Column className={styles.profile} width="4">
-            <Image
-              size="small"
-              centered
-              src="https://images.nightcafe.studio//assets/profile.png?tr=w-1600,c-at_max"
-            />
-            <br />
-            <Button color="orange" fluid disabled>
-              Edit Profile Picture
-            </Button>
-            <br />
-            <div>
-              Username: {username}
-              <Button floated="right" size="mini" disabled>
-                EDIT USERNAME
-              </Button>
+          <Grid.Column className={styles.profile} width="6">
+            <div className={styles.image}>
+              <Image
+                size="small"
+                centered
+                src="https://images.nightcafe.studio//assets/profile.png?tr=w-1600,c-at_max"
+              />
             </div>
-            <br />
-            <div>
-              Email: {email}
-              <Button floated="right" size="mini" disabled>
-                EDIT EMAIL
-              </Button>
+            <div className={styles.data}>
+              Account Type: <span className={styles.info}>{accountType}</span>
+            </div>
+            <div className={styles.data}>
+              Username: <span className={styles.info}>{username}</span>
+            </div>
+            <div className={styles.data}>
+              Email: <span className={styles.info}>{email}</span>
+            </div>
+            <div className={styles.data}>
+              Account Created At:
+              <span className={styles.info}> {createdAt.slice(0, 10)}</span>
+            </div>
+            <div className={styles.data}>
+              Survey Date:{" "}
+              <span className={styles.info}>{surveyDate.slice(0, 10)}</span>
+            </div>
+            <div className={styles.data}>
+              Overall Emotional Health:
+              <span className={styles.info}> {happyscale}</span>
             </div>
           </Grid.Column>
         </Grid.Row>

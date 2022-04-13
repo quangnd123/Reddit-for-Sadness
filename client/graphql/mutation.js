@@ -23,7 +23,10 @@ export const makeAppointment = gql`
       _id
       userID
       counsellorID
-      address
+      address {
+        lat
+        lng
+      }
       date
     }
   }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Image } from "semantic-ui-react";
+import { Button, Icon } from "semantic-ui-react";
 import MissionStatement from "../components/About/MissionStatement";
 import Stats from "../components/About/Stats";
 import WhoAreWe from "../components/About/WhoAreWe";
@@ -24,7 +24,7 @@ const about = () => {
         <Stats />
       </div>
       <WhoAreWe />
-      <div style={{ backgroundColor: "white" }}>
+      <div style={{ backgroundColor: "beige" }}>
         <Footer />
       </div>
     </>
