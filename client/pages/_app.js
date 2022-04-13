@@ -8,8 +8,12 @@ import Layout from "../components/Layout.js";
 import { AuthProvider } from "../context/auth.js";
 import { setContext } from "apollo-link-context";
 
+const URI =
+  process.env.NODE_ENV === "production"
+    ? "https://cz2006-344712.et.r.appspot.com/graphql"
+    : "http://localhost:4000/graphql";
 const httpLink = createHttpLink({
-  uri: "http://localhost:4000/graphql",
+  uri: URI,
 });
 
 const authLink = setContext(() => {
