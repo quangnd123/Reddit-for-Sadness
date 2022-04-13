@@ -1,6 +1,6 @@
 # CZ2006
-Reddit for sadness
-**https://cz2006-fehidk8gr-quangnd123.vercel.app/**
+Reddit for sadness<br />
+**Deployment: https://cz-2006-quangnd123.vercel.app/**
 # How to run on local machine:
 **Step 1**: Clone this repository <br />
 **Step 2**: Open this repository and 2 terminals <br />
